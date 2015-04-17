@@ -1,11 +1,11 @@
-function getAPI(url, callback) {
+function getAPI(url, callback, media) {
   var xhr = new XMLHttpRequest();
   xhr.open (
     "GET",                               /* do NOT use escape() */
     "https://api.github.com/" + url,
     true
   );
-  xhr.setRequestHeader('Accept', 'application/vnd.github.v3.raw+json');
+  xhr.setRequestHeader('Accept', 'application/vnd.github.v3.'+media+'+json');
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
       // defensive check
