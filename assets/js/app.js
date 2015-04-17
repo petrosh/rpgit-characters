@@ -15,7 +15,6 @@ function init() {
 function renderName() {
   var resp = JSON.parse(this.responseText);
   if(resp.content != ''){
-    var title = document.getElementById('pageTitle');
-    title.text = "Ciao " + resp.content;
+    var title = document.getElementById('pageTitle').innerHTML = "Ciao " + resp.content;
   }
 }
