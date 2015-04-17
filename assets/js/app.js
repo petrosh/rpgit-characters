@@ -14,8 +14,16 @@ function init() {
 
 function renderName() {
   var resp = this.responseText;
+  var upp = [];
   if(resp != ''){
-    var ele = tim(thi, { name: resp });
+    Math.seedrandom(resp);
+    for (profile = 0; profile < 16; profile++) {
+      for (char = 0; char < 6; char++) {
+        upp[ profile ][ char ] = (Math.random() * 6) + (Math.random() * 6);
+      }
+    }
+    console.log(upp);
+    var ele = tim(thi, { name: resp, profiles: upp });
   }else{
     var ele = tim(tname, path);
   }
