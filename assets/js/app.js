@@ -14,17 +14,14 @@ function init() {
 
 function renderName() {
   var resp = this.responseText;
-  var upp = [];
+  var out = '';
   if(resp != ''){
     Math.seedrandom(resp);
     for (var p = 0; p < 16; p++) {
-      upp.push( { ciao: die(2) } );
+      out += tim(profile, { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) } );
     }
-    var ele = tim(thi, {fruit:[
-  { name:"apples",  colour:"green"  },
-  { name:"oranges", colour:"orange" },
-  { name:"bananas", colour:"yellow" }
-] });
+    console.log(out);
+    var ele = tim(thi, { name: resp, profiles: upp });
   }else{
     var ele = tim(tname, path);
   }
