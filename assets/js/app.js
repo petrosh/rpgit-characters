@@ -15,13 +15,14 @@ function init() {
 
 function renderName() {
   var resp = this.responseText;
+  resp.replace(/^\s+|\s+$/g, "");
   var out = '';
   if(resp != ''){
     Math.seedrandom(resp);
     for (var p = 0; p < 16; p++) {
       out += tim(profile, { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) } );
     }
-    console.log(out);
+    console.log(resp);
     var ele = tim(thi, { name: resp, profiles: out });
   }else{
     var ele = tim(tname, path);
