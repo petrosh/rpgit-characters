@@ -22,7 +22,7 @@ function renderName() {
     for (var p = 0; p < 10; p++) {
       out += tim(profile, { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) } );
     }
-    console.log(resp);
+    console.log({ name: resp, profiles: out });
     var ele = tim(thi, { name: resp, profiles: out });
   }else{
     var ele = tim(tname, path);
