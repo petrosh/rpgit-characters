@@ -14,7 +14,7 @@ function init() {
 
 function renderName() {
   var resp = this.responseText;
-  var upp = [];
+  var upp = [][];
   if(resp != ''){
     Math.seedrandom(resp);
     for (profile = 0; profile < 16; profile++) {
