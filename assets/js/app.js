@@ -15,7 +15,7 @@ function init() {
 
 function renderName() {
   var resp = this.responseText;
-  resp.replace(/^\s+|\s+$/g, "");
+  resp = resp.replace(/^\s+|\s+$/g, "");
   var out = '';
   if(resp != ''){
     Math.seedrandom(resp);
