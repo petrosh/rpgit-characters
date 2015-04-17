@@ -31,7 +31,7 @@ function renderName() {
 function die(num){
   var out = 0;
   for (var i = 0; i < num; i++) {
-    out += Math.floor( Math.random() * 6 );
+    out += Math.floor( 1 + Math.random() * 6 );
   }
   return out;
 }
