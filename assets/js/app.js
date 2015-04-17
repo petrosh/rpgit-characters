@@ -14,18 +14,14 @@ function init() {
 
 function renderName() {
   var resp = this.responseText;
-  var profili = [];
+  var profili = {};
   if(resp != ''){
     Math.seedrandom(resp);
     for (profile = 0; profile < 16; profile++) {
-      var upp = [];
-      for (char = 0; char < 6; char++) {
-        upp.push( Math.floor( (Math.random() * 6) + (Math.random() * 6) ) );
-      }
-      profili.push( upp );
+      profili.profile = { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) };
     }
     console.log(profili);
-    var ele = tim(thi, { name: resp, profiles: upp });
+    var ele = tim(thi, { name: resp, profiles: profili });
   }else{
     var ele = tim(tname, path);
   }
