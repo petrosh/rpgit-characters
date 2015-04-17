@@ -19,7 +19,9 @@ function renderName() {
     Math.seedrandom(resp);
     for (profile = 0; profile < 16; profile++) {
       for (char = 0; char < 6; char++) {
-        upp[ profile ][ char ] = (Math.random() * 6) + (Math.random() * 6);
+        var cosa = (Math.random() * 6) + (Math.random() * 6);
+        console.log(cosa);
+        upp[profile][char]=cosa;
       }
     }
     console.log(upp);
