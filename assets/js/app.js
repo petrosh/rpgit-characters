@@ -14,8 +14,7 @@ function init() {
 
 function renderName() {
   var resp = this.responseText;
-  console.log(resp);
-  // if(resp.content != ''){
-  //   var title = document.getElementById('pageTitle').innerHTML = "Ciao " + resp.content;
-  // }
+  if(resp != ''){
+    var title = document.getElementById('pageTitle').innerHTML = "Ciao " + resp;
+  }
 }
