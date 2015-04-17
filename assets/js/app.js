@@ -20,7 +20,7 @@ function renderName() {
     for (profile = 0; profile < 16; profile++) {
       var upp = [];
       for (char = 0; char < 6; char++) {
-        upp.push( (Math.random() * 6) + (Math.random() * 6) );
+        upp.push( Math.floor( (Math.random() * 6) + (Math.random() * 6) ) );
       }
       profili.push( upp );
     }
