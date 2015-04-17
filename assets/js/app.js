@@ -20,6 +20,7 @@ function renderName() {
     for (profile = 0; profile < 16; profile++) {
       profili.push({ st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) });
     }
+    console.log(profili);
     var ele = tim(thi, { name: resp, profiles: profili });
   }else{
     var ele = tim(tname, path);
