@@ -13,7 +13,7 @@ function init() {
 }
 
 function renderName() {
-  var resp = JSON.parse(this.content);
+  var resp = JSON.parse(this.data);
   console.log(resp);
   // if(resp.content != ''){
   //   var title = document.getElementById('pageTitle').innerHTML = "Ciao " + resp.content;
