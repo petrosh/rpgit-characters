@@ -18,7 +18,7 @@ function renderName() {
   if(resp != ''){
     Math.seedrandom(resp);
     for (profile = 0; profile < 16; profile++) {
-      profili.profile = { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) };
+      profili.profile.push({ st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) });
     }
     console.log(profili);
     var ele = tim(thi, { name: resp, profiles: profili });
@@ -30,7 +30,7 @@ function renderName() {
 
 function die(num){
   var out = 0;
-  for (var i = 1; i < num; i++) {
+  for (var i = 0; i < num; i++) {
     out += Math.floor( Math.random() * 6 );
   }
   return out;
