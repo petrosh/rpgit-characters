@@ -9,7 +9,7 @@ function init() {
   // /repos/:owner/:repo/contents/:path
   var link = document.getElementById('editName');
   link.href = "https://github.com/" + path['username'] + "/rpgit-characters/edit/gh-pages/character/name.log";
-  // getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/contents/character/name.log", renderName, 'full' );
+  getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/contents/character/name.log", renderName, 'full' );
 }
 
 function renderName() {
