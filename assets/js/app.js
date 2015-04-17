@@ -45,7 +45,7 @@ function die( ){
   for (var i = 0; i < arguments[0]; i++) {
     out += Math.floor( 1 + Math.random() * 6 );
   }
-  outhex = out.toString(16);
+  outhex = out.toString(16).toUpperCase();
   if(arguments[1])out = outhex;
   return out;
 }
