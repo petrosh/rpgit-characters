@@ -24,7 +24,7 @@ function renderName() {
   { name:"apples",  colour:"green"  },
   { name:"oranges", colour:"orange" },
   { name:"bananas", colour:"yellow" }
-], name: resp, profiles: upp });
+] });
   }else{
     var ele = tim(tname, path);
   }
