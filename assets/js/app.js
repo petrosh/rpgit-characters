@@ -1,5 +1,6 @@
 var pathArray = window.location.host.split( '.' );
 var pathSlash = window.location.pathname.split( '/' ); // pathSlash[1]
+var pathHash = window.location.hash.substring(1); // Drop #
 var path = { username: pathArray[0], reponame: 'rpgit-characters' };
 var thi = document.getElementById("thi").innerHTML;
 var tname = document.getElementById("tname").innerHTML;
@@ -10,7 +11,11 @@ init();
 function init() {
   // check if name (read character/name.log content)
   // /repos/:owner/:repo/contents/:path
-  getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/contents/character/name.log", renderName, 'raw' );
+  if ( pathHash == '' ) {
+    getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/contents/character/name.log", renderName, 'raw' );
+  }else{
+    console.log('vai con ' + pathHash );
+  }
 }
 
 function renderName() {
