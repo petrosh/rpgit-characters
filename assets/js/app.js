@@ -15,7 +15,7 @@ function init() {
 function renderName() {
   var resp = this.responseText;
   if(resp != ''){
-    var ele = tim(thi, resp);
+    var ele = tim(thi, { 'resp': resp });
   }else{
     var ele = tim(tname, path);
   }
