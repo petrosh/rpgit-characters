@@ -7,7 +7,7 @@ init();
 function init() {
   // check if name (read character/name.log content)
   // /repos/:owner/:repo/contents/:path
-  var link = getElementByTagName('h2 > a')[0].setAttribute("href", "https://github.com/" + path['username'] + "/rpgit-characters/edit/gh-pages/character/name.log");
+  var link = document.getElementsByTagName('h2 > a')[0].setAttribute("href", "https://github.com/" + path['username'] + "/rpgit-characters/edit/gh-pages/character/name.log");
   getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/contents/character/name.log", renderName );
 }
 
