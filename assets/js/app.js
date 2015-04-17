@@ -20,12 +20,12 @@ function renderName() {
     for (var p = 0; p < 16; p++) {
       upp.push( { ciao: die(2) } );
     }
-    console.log({fruit:[
+    console.log( name: resp, profiles: upp });
+    var ele = tim(thi, {fruit:[
   { name:"apples",  colour:"green"  },
   { name:"oranges", colour:"orange" },
   { name:"bananas", colour:"yellow" }
-]}, name: resp, profiles: upp });
-    var ele = tim(thi, { name: resp, profiles: upp });
+], name: resp, profiles: upp });
   }else{
     var ele = tim(tname, path);
   }
