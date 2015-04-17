@@ -18,7 +18,7 @@ function renderName() {
   if(resp != ''){
     Math.seedrandom(resp);
     for (var p = 0; p < 16; p++) {
-      upp.push( { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) } );
+      upp.push( { ciao: die(2) } );
     }
     console.log({ name: resp, profiles: upp });
     var ele = tim(thi, { name: resp, profiles: upp });
