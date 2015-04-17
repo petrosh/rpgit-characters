@@ -14,17 +14,17 @@ function init() {
 
 function renderName() {
   var resp = this.responseText;
-  var upp = Array();
+  var profili = [];
   if(resp != ''){
     Math.seedrandom(resp);
     for (profile = 0; profile < 16; profile++) {
+      var upp = [];
       for (char = 0; char < 6; char++) {
-        var cosa = (Math.random() * 6) + (Math.random() * 6);
-        console.log(cosa);
-        upp[profile][char].push(cosa);
+        upp.push( (Math.random() * 6) + (Math.random() * 6) );
       }
+      profili.push( upp );
     }
-    console.log(upp);
+    console.log(profili);
     var ele = tim(thi, { name: resp, profiles: upp });
   }else{
     var ele = tim(tname, path);
