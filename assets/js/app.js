@@ -43,7 +43,7 @@ function renderName() {
 function die( ){
   var out = 0;
   for (var i = 0; i < arguments[0]; i++) {
-    out += Math.floor( 1 + Math.random() * 6 );
+    out += Math.floor( Math.random() * 6 ) + 1;
   }
   outhex = out.toString(16).toUpperCase();
   if(arguments[1])out = outhex;
