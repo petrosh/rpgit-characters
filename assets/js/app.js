@@ -1,6 +1,6 @@
 var pathArray = window.location.host.split( '.' );
 var pathSlash = window.location.pathname.split( '/' ); // pathSlash[1]
-var path = { 'username': pathArray[0], 'reponame': 'rpgit-characters' };
+var path = { username: pathArray[0], reponame: 'rpgit-characters' };
 var thi = document.getElementById("thi").innerHTML;
 var tname = document.getElementById("tname").innerHTML;
 
@@ -15,7 +15,7 @@ function init() {
 function renderName() {
   var resp = this.responseText;
   if(resp != ''){
-    var ele = tim(thi, { 'resp': resp });
+    var ele = tim(thi, { name: resp });
   }else{
     var ele = tim(tname, path);
   }
