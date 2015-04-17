@@ -3,6 +3,7 @@ var pathSlash = window.location.pathname.split( '/' ); // pathSlash[1]
 var path = { username: pathArray[0], reponame: 'rpgit-characters' };
 var thi = document.getElementById("thi").innerHTML;
 var tname = document.getElementById("tname").innerHTML;
+var profile = document.getElementById("profile").innerHTML;
 
 init();
 
