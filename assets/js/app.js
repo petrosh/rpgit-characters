@@ -9,6 +9,11 @@ var profile = document.getElementById("profile").innerHTML;
 init();
 
 function init() {
+  // Hash change
+  window.onhashchange = function() {
+    window.location.reload();
+  }
+
   // check if name (read character/name.log content)
   // /repos/:owner/:repo/contents/:path
   if ( pathHash == '' ) {
