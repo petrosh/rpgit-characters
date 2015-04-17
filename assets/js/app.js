@@ -13,29 +13,15 @@ function init() {
 }
 
 function renderName() {
-  var resp = this.responseText;;
+  var resp = this.responseText;
+  var upp = [];
   if(resp != ''){
     Math.seedrandom(resp);
-    var profili = {
-      { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) },
-      { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) },
-      { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) },
-      { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) },
-      { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) },
-      { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) },
-      { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) },
-      { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) },
-      { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) },
-      { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) },
-      { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) },
-      { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) },
-      { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) },
-      { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) },
-      { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) },
-      { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) }
-    };
-    console.log(profili);
-    var ele = tim(thi, { name: resp, profiles: profili });
+    for (var p = 0; p < 16; p++) {
+      upp.push( { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) } );
+    }
+    console.log(upp);
+    var ele = tim(thi, { name: resp, profiles: upp });
   }else{
     var ele = tim(tname, path);
   }
