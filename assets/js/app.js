@@ -27,3 +27,11 @@ function renderName() {
   }
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
+
+function die(num){
+  var out = 0;
+  for (var i = 1; i < num; i++) {
+    out += Math.floor( Math.random() * 6 );
+  }
+  return out;
+}
