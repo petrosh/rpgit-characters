@@ -5,7 +5,7 @@ function getAPI(url, callback) {
     "https://api.github.com/" + url,
     true
   );
-  xhr.setRequestHeader('Accept', 'application/vnd.github.v3.full+json');
+  xhr.setRequestHeader('Accept', 'application/vnd.github.v3.raw+json');
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
       // defensive check
@@ -15,6 +15,6 @@ function getAPI(url, callback) {
       }
     }
   }
-  // send the request *after* the event handler is defined 
+  // send the request *after* the event handler is defined
   xhr.send();
 }
