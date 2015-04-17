@@ -40,12 +40,12 @@ function renderName() {
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
 
-function die( num , hex = 1 ){
+function die( ){
   var out = 0;
-  for (var i = 0; i < num; i++) {
+  for (var i = 0; i < arguments[0]; i++) {
     out += Math.floor( 1 + Math.random() * 6 );
   }
   outhex = out.toString(16);
-  if(hex)out = outhex;
+  if(arguments[1])out = outhex;
   return out;
 }
