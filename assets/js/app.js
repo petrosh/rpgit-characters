@@ -21,7 +21,7 @@ function renderName() {
       for (char = 0; char < 6; char++) {
         var cosa = (Math.random() * 6) + (Math.random() * 6);
         console.log(cosa);
-        upp[profile][char]=cosa;
+        upp[profile][char].push(cosa);
       }
     }
     console.log(upp);
