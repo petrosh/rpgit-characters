@@ -63,16 +63,21 @@ function getName() {
   resp = resp.replace(/^\s+|\s+$/g, "");
   if(resp != ''){ // get profiles
     characterName = resp;
-    Math.seedrandom( path['username'] + characterName + 'upp' );
-    for (var p = 1; p <= 10; p++) {
-      // out += tim(profile, { i: p, st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) } );
-      char[p] = { st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) };
-    }
+    char = getProfiles( path['username'] + characterName + 'upp' );
     var ele = thi( { name: characterName, profiles: char } );
   }else{
     var ele = tname( path );
   }
   document.getElementsByTagName("section")[0].innerHTML = ele;
+}
+
+function getProfiles(seed){
+  Math.seedrandom( seed );
+  for (var p = 1; p <= 10; p++) {
+    // out += tim(profile, { i: p, st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) } );
+    char[p] = { st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) };
+  }
+  return char;
 }
 
 function die( ){
