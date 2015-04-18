@@ -75,7 +75,7 @@ function renderName() {
   var out = '';
   if(resp != ''){
     Math.seedrandom( path['username'] + resp + 'upp' );
-    for (var p = 1; p <= 10; p++) {
+    for (var p = 0; p < 10; p++) {
       out += tim(profile, { i: p, st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) } );
     }
     console.log({ name: resp, profiles: out });
