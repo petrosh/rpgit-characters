@@ -32,6 +32,7 @@ function init() {
       //var ele = tim(thi, { name: resp, profiles: out });
     }else{
       var ele = tim(tname, path);
+      document.getElementsByTagName("section")[0].innerHTML = ele;
     }
   }else{
     if( pathHash.length == 1 )
@@ -60,6 +61,7 @@ function getName() {
   if(resp != '') {
     characterName = resp;
   }
+  console.log(resp);
 }
 
 function renderName() {
