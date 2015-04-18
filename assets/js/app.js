@@ -52,6 +52,7 @@ function callbackChances() {
   var out = {};
   for (var service in resp){
     if (resp.hasOwnProperty(service)) { // service = navy
+      var partial = {};
       var obj = resp[service];
       console.log(upp);
       for (var throws in obj){
@@ -73,10 +74,12 @@ function callbackChances() {
               }
             }
           }
-          out[service]={throws: val};
+          console.log( service, throws, val);
+          // { navy: { enlist: 6, survive: 5 }, marines: { enlist: 7, survive: 5 } }
           // console.log("chance"+val);
         }
       }
+
     }
   }
   console.log(out);
