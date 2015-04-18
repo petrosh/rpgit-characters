@@ -16,18 +16,18 @@
 	<script type="text/x-handlebars-template" id="thi">
 		<h1>Hi {{name}}</h1>
 		<h2>here are 10 profiles approved by Imperium for you</h2>
-		{{#profiles}}<code>{{st}}{{de}}{{in}}{{en}}{{ed}}{{ss}} <a href="#{{@index}}">Profile {{@index}}</a>{{#unless @last}}<br>{{/unless}}</code>{{/profiles}}
+		{{#profiles}}<code>{{st}}{{de}}{{in}}{{en}}{{ed}}{{ss}} <a href="/#{{@index}}">Profile {{@index}}</a>{{#unless @last}}<br>{{/unless}}</code>{{/profiles}}
 	</script>
 
 	<script type="text/x-handlebars-template" id="tchances">
 		<h1>Hi {{name}}</h1>
 		<h2>here are chances in various services</h2>
-		<pre>{{#each chances}}{{@key}} {{> services}} <a href="#{{profile}}{{@index}}">Try Enlist {{@key}}</a>{{#unless @last}}<br>{{/unless}}{{/each}}</pre>
+		<pre>{{#each chances}}{{@key}} {{> services}} <a href="/#{{profile}}{{@index}}">Try Enlist {{@key}}</a>{{#unless @last}}<br>{{/unless}}{{/each}}</pre>
 	</script>
 
-	<script type="text/x-handlebars-template" id="tservices">
+<script type="text/x-handlebars-template" id="tservices">
 {{#each .}}{{@key}}: {{this}}{{#unless @last}}, {{/unless}}{{/each}}
-	</script>
+</script>
 
 	<script type="text/x-handlebars-template" id="tt1">
 		<h1>Term 1: {{name}}, profile {{profile}}</h1>
