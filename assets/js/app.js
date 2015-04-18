@@ -44,7 +44,7 @@ function init() {
 
 function getChances( table ) {
   // get table
-  getAPI( "repos/petrosh/rpgit-system/contents/tables/" + table + ".json", Chances, 'full' );
+  getAPI( "repos/petrosh/rpgit-system/contents/tables/" + table + ".json", Chances, 'raw' );
 }
 
 function Chances() {
