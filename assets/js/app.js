@@ -53,11 +53,11 @@ function callbackChances() {
   for (var service in resp){
     if (resp.hasOwnProperty(service)) { // service = navy
       var obj = resp[service];
-      console.log(upp,service);
+      console.log(upp);
       for (var throws in obj){
         if(obj.hasOwnProperty(throws)){ // throws=commission
           var thro = obj[throws]; // thro = { 2d6: "10+", +1: "ss9+" }
-          console.log(throws, thro);
+          // console.log(throws, thro);
           var val = 0;
           for (var tt in thro){
             if(thro.hasOwnProperty(tt)){ // tt = 2d6, +1, ...
@@ -66,18 +66,20 @@ function callbackChances() {
                 val = parseInt( key.substring(0,key.length-1) );
               }else{
                 var att = upp[key.substring(0,2)];
-                console.log("att " + att + " " + parseInt( key.substring(2,key.length-1)));
+                // console.log("att " + att + " " + parseInt( key.substring(2,key.length-1)));
                 if( att >= parseInt( key.substring(2,key.length-1) ) ){
                   val -= parseInt(tt);
                 }
               }
             }
           }
-          console.log("chance"+val);
+          out[service][throws]=val;
+          // console.log("chance"+val);
         }
       }
     }
   }
+  console.log(out);
 }
 
 function getName() {
