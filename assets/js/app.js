@@ -71,13 +71,13 @@ function getName() {
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
 
-function getProfiles( seed , chanches = 0 ){
-  Math.seedrandom( seed );
+function getProfiles(  ){
+  Math.seedrandom( arguments[0] );
   for (var p = 1; p <= 10; p++) {
     // out += tim(profile, { i: p, st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) } );
     char[p] = { st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) };
   }
-  return char;
+  if ( arguments[1] ) return char[arguments[1]]; else return char;
 }
 
 function die( ){
