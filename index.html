@@ -14,9 +14,9 @@
 <body>
 
 	<script type="text/x-handlebars-template" id="thi">
-		<h1>Hi {{name}} #</h1>
+		<h1>Hi {{name}}</h1>
 		<h2>here are 10 profiles approved by Imperium for you</h2>
-		{{#profiles}}{{#if st}}{{st}}{{de}}{{en}}{{in}}{{ed}}{{ss}} <a href="#{{@index}}">{{@index}}</a><br>{{/if}}{{/profiles}}
+		{{#profiles}}<div style="font-family: courier;">{{#if st}}{{st}}{{de}}{{en}}{{in}}{{ed}}{{ss}} <a href="#{{@index}}">select profile {{@index}}</a><br>{{/if}}</div>{{/profiles}}
 	</script>
 
 	<script type="text/x-handlebars-template" id="tt1">
