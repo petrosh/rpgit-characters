@@ -95,7 +95,7 @@ function getName() {
   resp = resp.replace(/^\s+|\s+$/g, "");
   if(resp != ''){ // get profiles
     characterName = resp;
-    char = getProfiles( path['username'] + characterName + 'upp',false,1 );
+    char = getProfiles( path['username'] + characterName + 'upp', false );
     var ele = thi( { name: characterName, profiles: char } );
   }else{
     var ele = tname( path );
