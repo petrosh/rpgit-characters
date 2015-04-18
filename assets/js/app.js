@@ -54,7 +54,6 @@ function callbackChances() {
   resp = JSON.parse(resp);
   upp = getProfiles( path['username'] + characterName + 'upp', profile );
   upphex = getProfiles( path['username'] + characterName + 'upp', profile, 1 );
-  console.log(upp);
   var out = {};
   for (var service in resp){
     if (resp.hasOwnProperty(service)) { // service = navy
@@ -85,7 +84,6 @@ function callbackChances() {
       out[service] = partial;
     }
   }
-  console.log(out);
   var ele = tchances( { chances: out, upp: upphex, profile: profile } );
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
