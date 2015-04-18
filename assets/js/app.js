@@ -16,12 +16,13 @@ function init() {
     window.location.reload();
   }
 
+  // get name
+  getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/contents/character/name.log", getName, 'raw' );
+
   // check if name (read character/name.log content)
   // /repos/:owner/:repo/contents/:path
   switch (pathHash == '') {
     case true:
-      // get name
-      getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/contents/character/name.log", getName, 'raw' );
       break;
 
     case false:
