@@ -23,8 +23,12 @@
 		<h1>Hi {{name}}</h1>
 		<h2>here are chances in various services</h2>
 		<div style="font-family: courier;">{{#each .}}
-			{{@key}}: {{this}} <a href="#{{@index}}">Service {{@index}}</a><br>
+			{{@key}}: {{> services}} <a href="#{{@key}}">Service {{@key}}</a><br>
 		{{/each}}</div>
+	</script>
+
+	<script type="text/x-handlebars-template" id="tchances">
+		{{this}}
 	</script>
 
 	<script type="text/x-handlebars-template" id="tt1">
