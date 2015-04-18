@@ -62,9 +62,9 @@ function getName() {
       char[p] = { st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) };
     }
     console.log( char );
-    var ele = tim(thi, char );
+    var ele = thi( char );
   }else{
-    var ele = tim(tname, path);
+    var ele = tname( path );
   }
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
