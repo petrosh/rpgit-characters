@@ -13,10 +13,10 @@
 </head>
 <body>
 
-<script type="text/tim" id="profile"><li>UPP {{st}}{{de}}{{en}}{{in}}{{ed}}{{ss}} <a href="#{{i}}">Profile {{i}}</a></li></script>
+<script type="text/x-handlebars-template" id="profile"><li>UPP {{st}}{{de}}{{en}}{{in}}{{ed}}{{ss}} <a href="#{{i}}">Profile {{i}}</a></li></script>
 
 
-	<script type="text/tim" id="thi">
+	<script type="text/x-handlebars-template" id="thi">
 		<h1>Hi </h1>
 		<h2>here are 10 profiles approved by Imperium for you</h2>
 		{{profiles}}
@@ -26,13 +26,13 @@
 		{{/profiles}}
 	</script>
 
-	<script type="text/tim" id="tt1">
+	<script type="text/x-handlebars-template" id="tt1">
 		<h1>Term 1: {{name}}, profile {{profile}}</h1>
 		<h2>select service to try Enlist</h2>
 		<ul>{{services}}</ul>
 	</script>
 
-	<script type="text/tim" id="tname">
+	<script type="text/x-handlebars-template" id="tname">
 		<h1>Character creation</h1>
 		<h2>edit <a href="https://github.com/{{username}}/rpgit-characters/edit/gh-pages/character/name.log">character/name.log</a>, enter character name and Commit: you get 10 profiles to choose from, approved from imperium</h2>
 	</script>
@@ -41,7 +41,7 @@
   </section>
 
 	<script src="assets/js/ghre.js"></script>
-	<script src="assets/js/tim.js"></script>
+	<script src="assets/js/handlebars-v1.3.0.js"></script>
 	<script src="assets/js/seedrandom.min.js"></script>
   <script src="assets/js/app.js"></script>
 

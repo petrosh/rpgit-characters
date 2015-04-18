@@ -2,9 +2,10 @@ var pathArray = window.location.host.split( '.' );
 var pathSlash = window.location.pathname.split( '/' ); // pathSlash[1]
 var pathHash = window.location.hash.substring(1); // Drop #
 var path = { username: pathArray[0], reponame: 'rpgit-characters' };
-var thi = document.getElementById("thi").innerHTML;
-var tname = document.getElementById("tname").innerHTML;
-var profilet = document.getElementById("profile").innerHTML;
+
+var thi = Handlebars.compile( document.getElementById("thi").innerHTML );
+var tname = Handlebars.compile(document.getElementById("tname").innerHTML);
+var profilet = Handlebars.compile(document.getElementById("profile").innerHTML);
 var char = [];
 var characterName = '', profile = '', service = '';
 
@@ -58,10 +59,10 @@ function getName() {
     Math.seedrandom( path['username'] + characterName + 'upp' );
     for (var p = 1; p <= 10; p++) {
       // out += tim(profile, { i: p, st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) } );
-      char[p] = { "st": die(2,1), "de": die(2,1), "in": die(2,1), "en": die(2,1), "ed": die(2,1), "ss": die(2,1) };
+      char[p] = { st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) };
     }
     console.log( char );
-    var ele = tim(thi, { profiles: JSON.stringify(char) });
+    var ele = tim(thi, char );
   }else{
     var ele = tim(tname, path);
   }
