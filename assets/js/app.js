@@ -49,7 +49,7 @@ function getChances( table ) {
 
 function Chances() {
   var resp = this.responseText;
-  console.log(resp);
+  console.log(resp, JSON.parse(resp) );
 }
 
 function getName() {
