@@ -63,7 +63,7 @@ function callbackChances() {
             if(thro.hasOwnProperty(tt)){ // tt = 2d6, +1, ...
               var key = thro[tt]; // key = 10+, ss9+, ...
               if(tt=="2d6"){
-                val = key.substring(0,key.length-1);
+                val = parseInt( key.substring(0,key.length-1) );
               }else{
                 var att = upp[key.substring(0,2)];
                 console.log(key.substring(2,key.length-1));
