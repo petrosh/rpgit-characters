@@ -49,7 +49,13 @@ function getChances( table ) {
 
 function Chances() {
   var resp = this.responseText;
-  console.log(resp, JSON.parse(resp) );
+  resp = JSON.parse(resp);
+  for (var key in resp){
+    if (resp.hasOwnProperty(key)) {
+      var obj = resp[key];
+      console.log(obj);
+    }
+  }
 }
 
 function getName() {
@@ -62,7 +68,6 @@ function getName() {
       // out += tim(profile, { i: p, st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) } );
       char[p] = { st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) };
     }
-    console.log( char );
     var ele = thi( { name: characterName, profiles: char } );
   }else{
     var ele = tname( path );
