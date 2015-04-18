@@ -16,19 +16,19 @@
 	<script type="text/x-handlebars-template" id="thi">
 		<h1>Hi {{name}}</h1>
 		<h2>here are 10 profiles approved by Imperium for you</h2>
-		{{#profiles}}<div style="font-family: courier;">{{st}}{{de}}{{in}}{{en}}{{ed}}{{ss}} <a href="#{{@index}}">Profile {{@index}}</a><br></div>{{/profiles}}
+		{{#profiles}}<code>{{st}}{{de}}{{in}}{{en}}{{ed}}{{ss}} <a href="#{{@index}}">Profile {{@index}}</a><br></code>{{/profiles}}
 	</script>
 
 	<script type="text/x-handlebars-template" id="tchances">
 		<h1>Hi {{name}}</h1>
 		<h2>here are chances in various services</h2>
-		<div style="font-family: courier;">{{#each .}}
+		<pre>{{#each .}}
 			{{@key}}&#9;{{> services}}&#9;<a href="#{{@key}}">Service {{@key}}</a><br>
-		{{/each}}</div>
+		{{/each}}</pre>
 	</script>
 
 	<script type="text/x-handlebars-template" id="tservices">
-		{{#each .}}{{this}}{{/each}}
+		{{#each .}}{{@key}}: {{this}}<br>{{/each}}
 	</script>
 
 	<script type="text/x-handlebars-template" id="tt1">
