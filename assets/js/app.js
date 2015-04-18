@@ -85,7 +85,7 @@ function callbackChances() {
     }
   }
   console.log(out);
-  var ele = tchances( out );
+  var ele = tchances( { chances: out, name: characterName, profile: profile } );
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
 
