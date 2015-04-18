@@ -84,6 +84,7 @@ function callbackChances() {
       out[service] = partial;
     }
   }
+  console.log(out);
   var ele = tchances( out );
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }

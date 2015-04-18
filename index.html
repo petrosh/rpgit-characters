@@ -23,7 +23,7 @@
 		<h1>Hi {{name}}</h1>
 		<h2>here are chances in various services</h2>
 		<div style="font-family: courier;">{{#each .}}
-			{{@key}}: {{> services}} <a href="#{{@key}}">Service {{@key}}</a><br>
+			{{@key}}&#9;{{> services}}&#9;<a href="#{{@key}}">Service {{@key}}</a><br>
 		{{/each}}</div>
 	</script>
 
