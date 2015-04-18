@@ -58,9 +58,9 @@ function callbackChances() {
         if(obj.hasOwnProperty(throws)){ // throws=commission
           var thro = obj[throws]; // thro = { 2d6: "10+", +1: "ss9+" }
           console.log(throws, thro);
+          var val = 0;
           for (var tt in thro){
             if(thro.hasOwnProperty(tt)){ // tt = 2d6, +1, ...
-              var val = 0;
               var key = thro[tt]; // key = 10+, ss9+, ...
               if(tt=="2d6"){
                 val = key.substring(-1);
