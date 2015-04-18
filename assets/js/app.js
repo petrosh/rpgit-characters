@@ -52,7 +52,7 @@ function callbackChances() {
   for (var service in resp){
     if (resp.hasOwnProperty(service)) { // service = navy
       var obj = resp[service];
-      console.log(service);
+      console.log(upp,service);
       for (var throws in obj){
         if(obj.hasOwnProperty(throws)){ // throws=commission
           var thro = obj[throws]; // thro = { 2d6: "10+", +1: "ss9+" }
