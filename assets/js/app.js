@@ -68,6 +68,7 @@ function callbackChances() {
                 var att = upp[key.substring(0,2)];
                 if( att >= key.substring(key.length-1) ){
                   val += parseInt(tt);
+                  console.log("- "+val);
                 }
               }
             }
