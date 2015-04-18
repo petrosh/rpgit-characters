@@ -30,7 +30,7 @@ function renderName() {
   if(resp != ''){
     Math.seedrandom( path['username'] + resp + 'upp' );
     for (var p = 1; p <= 10; p++) {
-      out += tim(profile, { i: p, st: die(2,1), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) } );
+      out += tim(profile, { i: p, st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) } );
     }
     console.log({ name: resp, profiles: out });
     var ele = tim(thi, { name: resp, profiles: out });
