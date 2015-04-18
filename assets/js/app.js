@@ -49,7 +49,7 @@ function getChances( table ) {
 function callbackChances() {
   var resp = this.responseText;
   resp = JSON.parse(resp);
-  upp = getValue( path['username'] + characterName + 'upp', profile );
+  upp = getProfiles( path['username'] + characterName + 'upp', profile );
   for (var key in resp){
     if (resp.hasOwnProperty(key)) {
       var obj = resp[key];
