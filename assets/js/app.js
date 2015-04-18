@@ -1,6 +1,7 @@
 var pathArray = window.location.host.split( '.' );
 var pathSlash = window.location.pathname.split( '/' ); // pathSlash[1]
 var pathHash = window.location.hash.substring(1); // Drop #
+
 var path = { username: pathArray[0], reponame: 'rpgit-characters' };
 
 var thi = Handlebars.compile( document.getElementById("thi").innerHTML );
@@ -27,6 +28,8 @@ function init() {
       switch (pathHash.length) {
         case 1:
           profile = pathHash;
+          enlistmentChances = getChances('service');
+          console.log( enlistmentChances );
           break;
 
         case 2:
@@ -39,12 +42,12 @@ function init() {
   }
 }
 
-function goTable( table ) {
+function getChances( table ) {
   // get table
-  getAPI( "repos/petrosh/rpgit-system/contents/tables/" + table + ".json", getTable, 'full' );
+  getAPI( "repos/petrosh/rpgit-system/contents/tables/" + table + ".json", Chances, 'full' );
 }
 
-function getTable() {
+function Chances() {
   var resp = this.responseText;
   console.log(resp);
 }
@@ -63,23 +66,6 @@ function getName() {
     var ele = thi( { name: characterName, profiles: char } );
   }else{
     var ele = tname( path );
-  }
-  document.getElementsByTagName("section")[0].innerHTML = ele;
-}
-
-function renderName() {
-  var resp = this.responseText;
-  resp = resp.replace(/^\s+|\s+$/g, "");
-  var out = '';
-  if(resp != ''){
-    Math.seedrandom( path['username'] + resp + 'upp' );
-    for (var p = 0; p < 10; p++) {
-      out += tim(profile, { i: p, st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) } );
-    }
-    console.log({ name: resp, profiles: out });
-    var ele = tim(thi, { name: resp, profiles: out });
-  }else{
-    var ele = tim(tname, path);
   }
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
