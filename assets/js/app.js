@@ -49,6 +49,7 @@ function callbackChances() {
   var resp = this.responseText;
   resp = JSON.parse(resp);
   upp = getProfiles( path['username'] + characterName + 'upp', profile );
+  var out = {};
   for (var service in resp){
     if (resp.hasOwnProperty(service)) { // service = navy
       var obj = resp[service];
@@ -57,6 +58,21 @@ function callbackChances() {
         if(obj.hasOwnProperty(throws)){ // throws=commission
           var thro = obj[throws]; // thro = { 2d6: "10+", +1: "ss9+" }
           console.log(throws, thro);
+          for (var tt in thro){
+            if(thro.hasOwnProperty(tt)){ // tt = 2d6, +1, ...
+              var val = 0;
+              var key = thro[tt]; // key = 10+, ss9+, ...
+              if(tt=="2d6"){
+                val = key.substring(-1);
+              }else{
+                var att = upp[key.substring(0,2)];
+                if( att >= key.substring(2,1) ){
+                  val += parseInt(tt);
+                }
+              }
+            }
+            console.log(val);
+          }
         }
       }
     }
