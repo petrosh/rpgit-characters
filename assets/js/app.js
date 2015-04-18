@@ -73,6 +73,7 @@ function callbackChances() {
               }
             }
           }
+          console.log("chance"+val);
         }
       }
     }
