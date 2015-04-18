@@ -22,13 +22,11 @@
 	<script type="text/x-handlebars-template" id="tchances">
 		<h1>Hi {{name}}</h1>
 		<h2>here are chances in various services</h2>
-		<pre>{{#each .}}
-			{{@key}}&#9;{{> services}}&#9;<a href="#{{@key}}">Service {{@key}}</a><br>
-		{{/each}}</pre>
+		<pre>{{#each .}}{{@key}}&#9;{{> services}}&#9;<a href="#{{@key}}">Service {{@key}}</a><br>{{/each}}</pre>
 	</script>
 
 	<script type="text/x-handlebars-template" id="tservices">
-		{{#each .}}{{@key}}: {{this}}<br>{{/each}}
+{{#each .}}{{@key}}: {{this}}<br>{{/each}}
 	</script>
 
 	<script type="text/x-handlebars-template" id="tt1">
