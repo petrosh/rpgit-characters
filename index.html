@@ -22,7 +22,7 @@
 	<script type="text/x-handlebars-template" id="tchances">
 		<h1>Hi {{name}}</h1>
 		<h2>here are chances in various services</h2>
-		<pre>{{#each chances}}{{@key}} {{> services}} <a href="/#{{profile}}{{@index}}">Try Enlist {{@key}}</a>{{#unless @last}}<br>{{/unless}}{{/each}}</pre>
+		<pre>{{#each chances}}{{@key}} {{> services}} <a href="/#{{enlist}}{{@index}}">Try Enlist {{@key}}</a>{{#unless @last}}<br>{{/unless}}{{/each}}</pre>
 	</script>
 
 <script type="text/x-handlebars-template" id="tservices">
