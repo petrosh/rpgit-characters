@@ -5,9 +5,7 @@ var path = { username: pathArray[0], reponame: 'rpgit-characters' };
 
 var thi = Handlebars.compile( document.getElementById("thi").innerHTML );
 var tname = Handlebars.compile(document.getElementById("tname").innerHTML);
-var profilet = Handlebars.compile(document.getElementById("profile").innerHTML);
-var char = [];
-var characterName = '', profile = '', service = '';
+var char = [], characterName = '', profile = '', service = '';
 
 init();
 
