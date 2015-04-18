@@ -58,7 +58,7 @@ function getName() {
     Math.seedrandom( path['username'] + characterName + 'upp' );
     for (var p = 1; p <= 10; p++) {
       // out += tim(profile, { i: p, st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) } );
-      char[p] = new Object( st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) );
+      char[p] = { st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) };
     }
     console.log( char );
     //var ele = tim(thi, { name: resp, profiles: out });
