@@ -73,12 +73,12 @@ function getName() {
 function getProfiles(  ){
   Math.seedrandom( arguments[0] );
   if ( arguments[1] ) {
-    for (var p = 1; p <= 10; p++) {
+    for (var p = 0; p < 10; p++) {
       char[p] = { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) };
     }
     return char[arguments[1]];
   }else{
-    for (var p = 1; p <= 10; p++) {
+    for (var p = 0; p < 10; p++) {
       char[p] = { st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) };
     }
     return char;
