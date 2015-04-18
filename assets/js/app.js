@@ -49,7 +49,7 @@ function callbackChances() {
   var resp = this.responseText;
   resp = JSON.parse(resp);
   upp = getProfiles( path['username'] + characterName + 'upp', profile );
-  console.log(profile, upp);
+  console.log(path['username'] + characterName + 'upp', profile, upp);
   var out = {};
   for (var service in resp){
     if (resp.hasOwnProperty(service)) { // service = navy
@@ -92,7 +92,7 @@ function getName() {
     characterName = resp;
     char = getProfiles( path['username'] + characterName + 'upp' );
     var ele = thi( { name: characterName, profiles: char } );
-    console.log({ name: characterName, profiles: char });
+    console.log(path['username'] + characterName + 'upp',{ name: characterName, profiles: char });
   }else{
     var ele = tname( path );
   }
