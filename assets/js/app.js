@@ -53,6 +53,7 @@ function callbackChances() {
   var resp = this.responseText;
   resp = JSON.parse(resp);
   upp = getProfiles( path['username'] + characterName + 'upp', profile );
+  upphex = getProfiles( path['username'] + characterName + 'upp', profile, 1 );
   console.log(upp);
   var out = {};
   for (var service in resp){
@@ -94,7 +95,7 @@ function getName() {
   resp = resp.replace(/^\s+|\s+$/g, "");
   if(resp != ''){ // get profiles
     characterName = resp;
-    char = getProfiles( path['username'] + characterName + 'upp' );
+    char = getProfiles( path['username'] + characterName + 'upp',,1 );
     var ele = thi( { name: characterName, profiles: char } );
   }else{
     var ele = tname( path );
@@ -106,12 +107,12 @@ function getProfiles(  ){
   Math.seedrandom( arguments[0] );
   if ( arguments[1] ) {
     for (var p = 0; p < 10; p++) {
-      char[p] = { st: die(2), de: die(2), in: die(2), en: die(2), ed: die(2), ss: die(2) };
+      char[p] = { st: die(2, arguments[3]), de: die(2, arguments[3]), in: die(2, arguments[3]), en: die(2, arguments[3]), ed: die(2, arguments[3]), ss: die(2, arguments[3]) };
     }
     return char[arguments[1]];
   }else{
     for (var p = 0; p < 10; p++) {
-      char[p] = { st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) };
+      char[p] = { st: die(2, arguments[3]), de: die(2, arguments[3]), in: die(2, arguments[3]), en: die(2, arguments[3]), ed: die(2, arguments[3]), ss: die(2, arguments[3]) };
     }
     return char;
   }
