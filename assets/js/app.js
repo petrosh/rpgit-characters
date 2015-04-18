@@ -73,7 +73,7 @@ function callbackChances() {
               }
             }
           }
-          out[service][throws]=val;
+          out[service]={throws: val};
           // console.log("chance"+val);
         }
       }
