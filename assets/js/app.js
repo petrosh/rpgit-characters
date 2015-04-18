@@ -49,12 +49,12 @@ function callbackChances() {
   var resp = this.responseText;
   resp = JSON.parse(resp);
   upp = getProfiles( path['username'] + characterName + 'upp', profile );
+  console.log(profile, upp);
   var out = {};
   for (var service in resp){
     if (resp.hasOwnProperty(service)) { // service = navy
       var partial = {};
       var obj = resp[service];
-      console.log(upp);
       for (var throws in obj){
         if(obj.hasOwnProperty(throws)){ // throws=commission
           var thro = obj[throws]; // thro = { 2d6: "10+", +1: "ss9+" }
