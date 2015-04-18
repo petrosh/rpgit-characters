@@ -2,6 +2,7 @@
 rpgit characters generator and architecture
 
 - [seed](http://davidbau.com/archives/2010/01/30/random_seeds_coded_hints_and_quintillions.html#more)
+- [json linter](https://www.jsoneditoronline.org/)
 
 ## Permalink to a file in a specific commit
 For a permanent link to the specific version of a file that you see, instead of using a branch name in the URL (i.e. the master part in the example above), put a commit id. This will permanently link to the exact version of the file in that commit.
@@ -51,7 +52,7 @@ expresses the basic characteristics in a specific sequence using hexadecimal (ba
 
 - Endurance measures physical determination and stamina.
 
-- Intelligence corresponds t o IQ.
+- Intelligence corresponds to IQ.
 
 - Education indicates the highest level of schooling attained.
 
