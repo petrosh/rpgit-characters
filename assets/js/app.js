@@ -6,7 +6,7 @@ var thi = document.getElementById("thi").innerHTML;
 var tname = document.getElementById("tname").innerHTML;
 var profilet = document.getElementById("profile").innerHTML;
 var char = [];
-var characterName = '';
+var characterName = '', profile = '', service = '';
 
 init();
 
