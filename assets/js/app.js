@@ -37,19 +37,19 @@ function init() {
           service = pathHash.substring(1,1);
           break;
       }
-      console.log(profile,service);
       break;
   }
 }
 
 function getChances( table ) {
   // get table
-  getAPI( "repos/petrosh/rpgit-system/contents/tables/" + table + ".json", Chances, 'raw' );
+  getAPI( "repos/petrosh/rpgit-system/contents/tables/" + table + ".json", callbackChances, 'raw' );
 }
 
-function Chances() {
+function callbackChances() {
   var resp = this.responseText;
   resp = JSON.parse(resp);
+  upp = getValue( path['username'] + characterName + 'upp', profile );
   for (var key in resp){
     if (resp.hasOwnProperty(key)) {
       var obj = resp[key];
@@ -71,7 +71,7 @@ function getName() {
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
 
-function getProfiles(seed){
+function getProfiles( seed , chanches = 0 ){
   Math.seedrandom( seed );
   for (var p = 1; p <= 10; p++) {
     // out += tim(profile, { i: p, st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) } );
