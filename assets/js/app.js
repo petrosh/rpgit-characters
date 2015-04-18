@@ -86,7 +86,7 @@ function callbackChances() {
     }
   }
   console.log(out);
-  var ele = tchances( { chances: out, upp: upp, profile: profile } );
+  var ele = tchances( { chances: out, upp: upphex, profile: profile } );
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
 
@@ -95,7 +95,7 @@ function getName() {
   resp = resp.replace(/^\s+|\s+$/g, "");
   if(resp != ''){ // get profiles
     characterName = resp;
-    char = getProfiles( path['username'] + characterName + 'upp', false );
+    char = getProfiles( path['username'] + characterName + 'upp', false,1 );
     var ele = thi( { name: characterName, profiles: char } );
   }else{
     var ele = tname( path );
