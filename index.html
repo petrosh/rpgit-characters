@@ -19,11 +19,9 @@
 	<script type="text/x-handlebars-template" id="thi">
 		<h1>Hi </h1>
 		<h2>here are 10 profiles approved by Imperium for you</h2>
-		{{profiles}}
-		<ul>
-			<li>{{st}}</li>
-		</ul>
-		{{/profiles}}
+		{{#each profiles}}
+			{{this}}
+		{{else}}{{/each}}
 	</script>
 
 	<script type="text/x-handlebars-template" id="tt1">

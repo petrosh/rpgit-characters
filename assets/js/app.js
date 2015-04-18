@@ -62,7 +62,7 @@ function getName() {
       char[p] = { st: die(2,1), de: die(2,1), in: die(2,1), en: die(2,1), ed: die(2,1), ss: die(2,1) };
     }
     console.log( char );
-    var ele = thi( char );
+    var ele = thi( { profiles: char } );
   }else{
     var ele = tname( path );
   }
