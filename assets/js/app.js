@@ -50,7 +50,7 @@ function callbackChances() {
   var resp = this.responseText;
   resp = JSON.parse(resp);
   upp = getProfiles( path['username'] + characterName + 'upp', profile );
-  console.log(path['username'] + characterName + 'upp', profile, upp);
+  console.log(upp);
   var out = {};
   for (var service in resp){
     if (resp.hasOwnProperty(service)) { // service = navy
@@ -75,12 +75,11 @@ function callbackChances() {
               }
             }
           }
+          partial[throws] = val;
           console.log( service, throws, val);
-          // { navy: { enlist: 6, survive: 5 }, marines: { enlist: 7, survive: 5 } }
-          // console.log("chance"+val);
         }
       }
-
+      out[service] = partial;
     }
   }
   console.log(out);
@@ -93,7 +92,6 @@ function getName() {
     characterName = resp;
     char = getProfiles( path['username'] + characterName + 'upp' );
     var ele = thi( { name: characterName, profiles: char } );
-    console.log(path['username'] + characterName + 'upp',{ name: characterName, profiles: char });
   }else{
     var ele = tname( path );
   }
