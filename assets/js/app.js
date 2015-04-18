@@ -107,12 +107,12 @@ function getProfiles(  ){
   Math.seedrandom( arguments[0] );
   if ( arguments[1] ) {
     for (var p = 0; p < 10; p++) {
-      char[p] = { st: die(2, arguments[3]), de: die(2, arguments[3]), in: die(2, arguments[3]), en: die(2, arguments[3]), ed: die(2, arguments[3]), ss: die(2, arguments[3]) };
+      char[p] = { st: die(2, arguments[2]), de: die(2, arguments[2]), in: die(2, arguments[2]), en: die(2, arguments[2]), ed: die(2, arguments[2]), ss: die(2, arguments[2]) };
     }
     return char[arguments[1]];
   }else{
     for (var p = 0; p < 10; p++) {
-      char[p] = { st: die(2, arguments[3]), de: die(2, arguments[3]), in: die(2, arguments[3]), en: die(2, arguments[3]), ed: die(2, arguments[3]), ss: die(2, arguments[3]) };
+      char[p] = { st: die(2, arguments[2]), de: die(2, arguments[2]), in: die(2, arguments[2]), en: die(2, arguments[2]), ed: die(2, arguments[2]), ss: die(2, arguments[2]) };
     }
     return char;
   }
