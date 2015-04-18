@@ -28,8 +28,7 @@ function init() {
       switch (pathHash.length) {
         case 1:
           profile = pathHash;
-          enlistmentChances = getChances('service');
-          console.log( enlistmentChances );
+          getChances('service');
           break;
 
         case 2:
@@ -53,7 +52,7 @@ function callbackChances() {
   for (var key in resp){
     if (resp.hasOwnProperty(key)) {
       var obj = resp[key];
-      console.log(obj);
+       console.log(upp,key,obj);
     }
   }
 }
