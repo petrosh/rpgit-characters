@@ -11,7 +11,7 @@ function getAPI(url, callback, media) {
       // defensive check
       if (typeof callback == "function") {
         // apply() sets the meaning of "this" in the callback
-        document.getElementById("xremaining").innerHTML = xhr.getResponseHeader("X-RateLimit-Remaining");
+        document.getElementById("xremaining").innerHTML = 'remaining ' + xhr.getResponseHeader("X-RateLimit-Remaining");
         callback.apply(xhr);
       }
     }
