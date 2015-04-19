@@ -103,6 +103,7 @@ function callbackChances() {
 }
 
 function getProfiles() {
+  console.log(characterName);
   if(characterName != ''){ // get profiles
     char = diceProfiles( path['username'] + characterName + 'upp', false,1 );
     var ele = thi( { name: characterName, profiles: char } );
