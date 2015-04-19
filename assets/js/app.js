@@ -47,7 +47,7 @@ function init() {
 
 function getChances( table ) {
   // get table
-  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/born/tables/" + table + ".json", callbackChances, 'raw' );
+  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/v0.1/tables/" + table + ".json", callbackChances, 'raw' );
 }
 
 function callbackChances() {
