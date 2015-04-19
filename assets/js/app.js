@@ -89,7 +89,7 @@ function callbackChances() {
 }
 
 function getName() {
-  console.log(this.meta);
+  console.log(this.getResponseHeader("X-RateLimit-Remaining"));
   var resp = this.responseText;
   resp = resp.replace(/^\s+|\s+$/g, "");
   if(resp != ''){ // get profiles
