@@ -14,7 +14,7 @@ function getAPI(url, callback, media, fallback) {
         callback.apply(xhr);
       }
     }
-    if (xhr.readyState == 4 && nhr.status == 404) {
+    if (xhr.readyState == 4 && xhr.status == 404) {
       // defensive check
       if (typeof fallback == "function") {
         // apply() sets the meaning of "this" in the callback
