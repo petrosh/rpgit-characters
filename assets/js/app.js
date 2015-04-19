@@ -9,7 +9,7 @@ var tname = Handlebars.compile(document.getElementById("tname").innerHTML);
 var tchances = Handlebars.compile(document.getElementById("tchances").innerHTML);
 var tservice = Handlebars.registerPartial("services", document.getElementById("tservices").innerHTML);
 
-var char = [], characterName = '', profile = '', service = '', systemVersion = '';
+var char = [], characterName = '', profile = '', service = '', systemVersion = ''; tableChecked = '';
 
 init();
 
@@ -20,26 +20,32 @@ function init() {
     window.location.reload();
   }
 
-  // get name
-  getAPI( "https://cdn.rawgit.com/" + path['username'] + "/" + path['reponame'] + "/v0.1/character/name.txt", callbackName, fallbackName );
   // get system version
   getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/gh-pages/version.txt", callbackVersion, fallbackVersion );
+}
 
-  // check if name (read character/name.log content)
-  // /repos/:owner/:repo/contents/:path
+function selectPage() {
+
   switch (pathHash == '') {
+
     case true:
+      // Home page so show Profiles
       getProfiles();
       break;
 
     case false:
+      // Check term
       switch (pathHash.length) {
+
         case 1:
+          // Profile selected so show servces chances
           profile = pathHash;
-          getChances('service');
+          tableChecked = 'service';
+          getChances(tableChecked);
           break;
 
         case 2:
+          // Service selected so ask for reenlist
           profile = pathHash.substring(0,1);
           service = pathHash.substring(1,1);
           break;
@@ -49,28 +55,31 @@ function init() {
 }
 
 function getChances( table ) {
-  // get table
-  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + table + ".json", callbackChances );
+  // Get a table from system
+  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + table + ".json", callbackChances, fallbackChances );
 }
 
 function callbackVersion() {
+  // System version retrive and save then check character name
   var resp = this.responseText;
   systemVersion = resp;
-  console.log("cb"+systemVersion);
+  // get character name
+  getAPI( "https://cdn.rawgit.com/" + path['username'] + "/" + path['reponame'] + "/v0.1/character/name.txt", callbackName, fallbackName );
 }
 
 function fallbackVersion() {
   document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/petrosh/rpgit-system/gh-pages/version.txt";
 }
 
-function fallbackName() {
-  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/" + path['username'] + "/" + path['reponame'] + "/v0.1/character/name.txt";
-}
-
 function callbackName() {
+  // Character name retrive and save then select Page to display
   var resp = this.responseText;
   characterName = resp;
-  console.log("cb"+characterName);
+  selectPage();
+}
+
+function fallbackName() {
+  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/" + path['username'] + "/" + path['reponame'] + "/v0.1/character/name.txt";
 }
 
 function callbackChances() {
@@ -110,6 +119,10 @@ function callbackChances() {
   }
   var ele = tchances( { chances: out, upp: upphex, profile: profile } );
   document.getElementsByTagName("section")[0].innerHTML = ele;
+}
+
+function fallbackChances() {
+  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + tableChecked + ".json";
 }
 
 function getProfiles() {
