@@ -21,9 +21,9 @@ function init() {
   }
 
   // get name
-  getAPI( "https://cdn.rawgit.com/" + path['username'] + "/" + path['reponame'] + "/v0.1/character/name.txt", callbackName );
+  getAPI( "https://cdn.rawgit.com/" + path['username'] + "/" + path['reponame'] + "/v0.1/character/name.txt", callbackName, fallbackName );
   // get system version
-  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/gh-pages/version.txt", callbackVersion );
+  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/gh-pages/version.txt", callbackVersion, fallbackVersion );
 
   // check if name (read character/name.log content)
   // /repos/:owner/:repo/contents/:path
@@ -57,6 +57,14 @@ function callbackVersion() {
   var resp = this.responseText;
   systemVersion = resp;
   console.log("cb"+systemVersion);
+}
+
+function fallbackVersion() {
+  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/petrosh/rpgit-system/gh-pages/version.txt";
+}
+
+function fallbackName() {
+  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/" + path['username'] + "/" + path['reponame'] + "/v0.1/character/name.txt";
 }
 
 function callbackName() {

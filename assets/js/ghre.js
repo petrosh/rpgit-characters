@@ -1,4 +1,4 @@
-function getAPI(url, callback, media, fallBack) {
+function getAPI(url, callback, media, fallback) {
   var xhr = new XMLHttpRequest();
   xhr.open (
     "GET",                               /* do NOT use escape() */
@@ -16,7 +16,7 @@ function getAPI(url, callback, media, fallBack) {
     }
     if (xhr.readyState == 4 && nhr.status == 404) {
       // defensive check
-      if (typeof callback == "function") {
+      if (typeof fallback == "function") {
         // apply() sets the meaning of "this" in the callback
         fallback.apply(xhr);
       }
