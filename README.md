@@ -5,6 +5,7 @@ rpgit characters generator and architecture
 - [json linter](https://www.jsoneditoronline.org/)
 - [handlebars](http://handlebarsjs.com/)
 - [getResponseHeader method](http://help.dottoro.com/ljxsrgqe.php)
+- [rawgit](https://rawgit.com/)
 
 ## Handlebars helper
 
