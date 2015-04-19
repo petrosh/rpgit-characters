@@ -12,6 +12,10 @@ var tservice = Handlebars.registerPartial("services", document.getElementById("t
 Handlebars.registerHelper("capitalize", function(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 });
+// Convert to Hex
+Handlebars.registerHelper("hex", function(value) {
+  return value.toString(16).toUpperCase();
+});
 
 var char = [], characterName = '', profile = '', service = '', systemVersion = ''; tableChecked = '';
 
@@ -90,7 +94,6 @@ function callbackChances() {
   var resp = this.responseText;
   resp = JSON.parse(resp);
   upp = diceProfiles( path['username'] + characterName + 'upp', profile );
-  upphex = diceProfiles( path['username'] + characterName + 'upp', profile, 1 );
   var out = {};
   for (var service in resp){
     if (resp.hasOwnProperty(service)) { // service = navy
@@ -121,7 +124,7 @@ function callbackChances() {
       out[service] = partial;
     }
   }
-  var ele = tchances( { chances: out, upp: upphex, profile: profile } );
+  var ele = tchances( { chances: out, upp: upp, profile: profile } );
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
 

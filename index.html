@@ -15,18 +15,18 @@
 	<div id="xremaining"></div>
 	<script type="text/x-handlebars-template" id="thi">
 		<h1>Hi {{name}}</h1>
-		<h2>here are 10 profiles approved by Imperium for you</h2>
+		<h2>Here are 10 profiles approved by Imperium for you</h2>
 		{{#profiles}}<code>{{st}}{{de}}{{in}}{{en}}{{ed}}{{ss}} <a href="#{{@index}}">Profile {{@index}}</a>{{#unless @last}}<br>{{/unless}}</code>{{/profiles}}
 	</script>
 
 	<script type="text/x-handlebars-template" id="tchances">
-		<h1>Ok {{upp.st}}{{upp.de}}{{upp.in}}{{upp.en}}{{upp.ed}}{{upp.ss}}</h1>
-		<h2>here are chances in various services</h2>
-		<div>{{#each chances}}<h3>{{@key}}</h3>{{> services}}<br><a href="#{{../profile}}{{@index}}">Try enlist {{capitalize @key}}</a>{{#unless @last}}<br><br>{{/unless}}{{/each}}</pre>
+		<h1>Ok {{hex upp.st}}{{hex upp.de}}{{hex upp.in}}{{hex upp.en}}{{hex upp.ed}}{{hex upp.ss}}</h1>
+		<h2>Here are chances in various services</h2>
+		<div>{{#each chances}}<h3>{{@key}}</h3>{{> services}}<br><a href="#{{../profile}}{{@index}}">Try enlist {{capitalize @key}}</a>{{#unless @last}}<br>{{/unless}}{{/each}}</dive>
 	</script>
 
 <script type="text/x-handlebars-template" id="tservices">
-{{#each .}}{{#unless @first}}, {{/unless}}{{@key}}: {{this}}{{/each}}</script>
+{{#each .}}{{#unless @first}}, {{/unless}}{{capitalize @key}}: {{this}}{{/each}}</script>
 
 	<script type="text/x-handlebars-template" id="tt1">
 		<h1>Term 1: {{name}}, profile {{profile}}</h1>
