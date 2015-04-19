@@ -89,6 +89,7 @@ function callbackChances() {
 }
 
 function getName() {
+  console.log(this);
   var resp = this.responseText;
   resp = resp.replace(/^\s+|\s+$/g, "");
   if(resp != ''){ // get profiles
