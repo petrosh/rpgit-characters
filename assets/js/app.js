@@ -8,6 +8,10 @@ var thi = Handlebars.compile( document.getElementById("thi").innerHTML );
 var tname = Handlebars.compile(document.getElementById("tname").innerHTML);
 var tchances = Handlebars.compile(document.getElementById("tchances").innerHTML);
 var tservice = Handlebars.registerPartial("services", document.getElementById("tservices").innerHTML);
+// Helpers
+Handlebars.registerHelper("capitalize", function(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+});
 
 var char = [], characterName = '', profile = '', service = '', systemVersion = ''; tableChecked = '';
 
