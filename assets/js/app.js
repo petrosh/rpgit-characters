@@ -29,6 +29,7 @@ function init() {
   // /repos/:owner/:repo/contents/:path
   switch (pathHash == '') {
     case true:
+      getProfiles();
       break;
 
     case false:
@@ -101,9 +102,9 @@ function callbackChances() {
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
 
-function getName() {
+function getProfiles() {
   if(characterName != ''){ // get profiles
-    char = getProfiles( path['username'] + characterName + 'upp', false,1 );
+    char = diceProfiles( path['username'] + characterName + 'upp', false,1 );
     var ele = thi( { name: characterName, profiles: char } );
   }else{
     var ele = tname( path );
@@ -111,7 +112,7 @@ function getName() {
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
 
-function getProfiles(  ){
+function diceProfiles(  ){
   Math.seedrandom( arguments[0] );
   if ( arguments[1] ) {
     for (var p = 0; p < 10; p++) {
