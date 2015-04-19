@@ -66,8 +66,8 @@ function callbackName() {
 function callbackChances() {
   var resp = this.responseText;
   resp = JSON.parse(resp);
-  upp = getProfiles( path['username'] + characterName + 'upp', profile );
-  upphex = getProfiles( path['username'] + characterName + 'upp', profile, 1 );
+  upp = diceProfiles( path['username'] + characterName + 'upp', profile );
+  upphex = diceProfiles( path['username'] + characterName + 'upp', profile, 1 );
   var out = {};
   for (var service in resp){
     if (resp.hasOwnProperty(service)) { // service = navy
