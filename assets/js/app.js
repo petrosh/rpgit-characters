@@ -9,7 +9,7 @@ var tname = Handlebars.compile(document.getElementById("tname").innerHTML);
 var tchances = Handlebars.compile(document.getElementById("tchances").innerHTML);
 var tservice = Handlebars.registerPartial("services", document.getElementById("tservices").innerHTML);
 
-var char = [], characterName = '', profile = '', service = '', systemVersion = 'v0.2';
+var char = [], characterName = '', profile = '', service = '', systemVersion = '';
 
 init();
 
@@ -23,7 +23,7 @@ function init() {
   // get name
   getAPI( "https://cdn.rawgit.com/" + path['username'] + "/" + path['reponame'] + "/born/character/name.log", callbackName );
   // get system version
-  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/version.log", callbackVersion );
+  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/gh-pages/version.log", callbackVersion );
 
   // check if name (read character/name.log content)
   // /repos/:owner/:repo/contents/:path
