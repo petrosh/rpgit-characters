@@ -21,7 +21,7 @@ function init() {
   }
 
   // get name
-  getAPI( "https://cdn.rawgit.com/" + path['username'] + "/" + path['reponame'] + "/born/character/name.txt", callbackName );
+  getAPI( "https://cdn.rawgit.com/" + path['username'] + "/" + path['reponame'] + "/v0.1/character/name.txt", callbackName );
   // get system version
   getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/gh-pages/version.txt", callbackVersion );
 
