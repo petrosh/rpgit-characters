@@ -9,12 +9,26 @@ var tname = Handlebars.compile(document.getElementById("tname").innerHTML);
 var tchances = Handlebars.compile(document.getElementById("tchances").innerHTML);
 var tservice = Handlebars.registerPartial("services", document.getElementById("tservices").innerHTML);
 // Helpers
+// Capitalize
 Handlebars.registerHelper("capitalize", function(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 });
 // Convert to Hex
 Handlebars.registerHelper("hex", function(value) {
   return value.toString(16).toUpperCase();
+});
+// Math from http://jsfiddle.net/mpetrovich/wMmHS/
+Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
+    lvalue = parseFloat(lvalue);
+    rvalue = parseFloat(rvalue);
+
+    return {
+        "+": lvalue + rvalue,
+        "-": lvalue - rvalue,
+        "*": lvalue * rvalue,
+        "/": lvalue / rvalue,
+        "%": lvalue % rvalue
+    }[operator];
 });
 
 var char = [], characterName = '', profile = '', service = '', systemVersion = ''; tableChecked = '';

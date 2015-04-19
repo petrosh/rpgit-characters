@@ -4,7 +4,7 @@ rpgit characters generator and architecture
 - [seed](http://davidbau.com/archives/2010/01/30/random_seeds_coded_hints_and_quintillions.html#more)
 - [json linter](https://www.jsoneditoronline.org/)
 - [handlebars](http://handlebarsjs.com/)
-- [handlebars helpers](https://github.com/diy/handlebars-helpers/tree/master/lib)(http://jsfiddle.net/mpetrovich/wMmHS/)
+- [handlebars helpers](https://github.com/diy/handlebars-helpers/tree/master/lib)
 - [getResponseHeader method](http://help.dottoro.com/ljxsrgqe.php)
 - [rawgit](https://rawgit.com/)
 
