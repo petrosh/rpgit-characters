@@ -21,9 +21,9 @@ function init() {
   }
 
   // get name
-  getAPI( "https://cdn.rawgit.com/" + path['username'] + "/" + path['reponame'] + "/born/character/name.log", getName, 'raw' );
+  getAPI( "https://cdn.rawgit.com/" + path['username'] + "/" + path['reponame'] + "/born/character/name.log", callbackName );
   // get system version
-  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/version.log", callbackVersion, 'raw' );
+  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/version.log", callbackVersion );
 
   // check if name (read character/name.log content)
   // /repos/:owner/:repo/contents/:path
@@ -49,14 +49,19 @@ function init() {
 
 function getChances( table ) {
   // get table
-  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/v0.1/tables/" + table + ".json", callbackChances, 'raw' );
+  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + table + ".json", callbackChances );
 }
 
 function callbackVersion() {
   var resp = this.responseText;
-  console.log(resp);
   systemVersion = resp;
 }
+
+function callbackName() {
+  var resp = this.responseText;
+  characterName = resp;
+}
+
 function callbackChances() {
   var resp = this.responseText;
   resp = JSON.parse(resp);
@@ -97,10 +102,7 @@ function callbackChances() {
 }
 
 function getName() {
-  var resp = this.responseText;
-  resp = resp.replace(/^\s+|\s+$/g, "");
-  if(resp != ''){ // get profiles
-    characterName = resp;
+  if(characterName != ''){ // get profiles
     char = getProfiles( path['username'] + characterName + 'upp', false,1 );
     var ele = thi( { name: characterName, profiles: char } );
   }else{
