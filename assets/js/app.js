@@ -21,7 +21,7 @@ function init() {
   }
 
   // get name
-  getAPI( "https://raw.githubusercontent.com/" + path['username'] + "/" + path['reponame'] + "/gh-pages/character/name.log", getName, 'raw' );
+  getAPI( "https://cdn.rawgit.com/" + path['username'] + "/" + path['reponame'] + "/born/character/name.log", getName, 'raw' );
 
   // check if name (read character/name.log content)
   // /repos/:owner/:repo/contents/:path
