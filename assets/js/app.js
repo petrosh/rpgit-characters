@@ -56,12 +56,13 @@ function getChances( table ) {
 function callbackVersion() {
   var resp = this.responseText;
   systemVersion = resp;
+  console.log("cb"+systemVersion);
 }
 
 function callbackName() {
   var resp = this.responseText;
   characterName = resp;
-  console.log(characterName);
+  console.log("cb"+characterName);
 }
 
 function callbackChances() {
@@ -104,6 +105,7 @@ function callbackChances() {
 }
 
 function getProfiles() {
+  console.log("gp"+characterName);
   if(characterName != ''){ // get profiles
     char = diceProfiles( path['username'] + characterName + 'upp', false,1 );
     var ele = thi( { name: characterName, profiles: char } );
