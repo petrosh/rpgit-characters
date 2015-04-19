@@ -21,7 +21,7 @@ function init() {
   }
 
   // get name
-  getAPI( "repos/" + path['username'] + "/" + path['reponame'] + "/contents/character/name.log", getName, 'raw' );
+  getAPI( "https://raw.githubusercontent.com/" + path['username'] + "/" + path['reponame'] + "/gh-pages/character/name.log", getName, 'raw' );
 
   // check if name (read character/name.log content)
   // /repos/:owner/:repo/contents/:path
@@ -47,7 +47,7 @@ function init() {
 
 function getChances( table ) {
   // get table
-  getAPI( "repos/petrosh/rpgit-system/contents/tables/" + table + ".json", callbackChances, 'raw' );
+  getAPI( "https://api.github.com/repos/petrosh/rpgit-system/contents/tables/" + table + ".json", callbackChances, 'raw' );
 }
 
 function callbackChances() {

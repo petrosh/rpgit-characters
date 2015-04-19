@@ -2,7 +2,7 @@ function getAPI(url, callback, media) {
   var xhr = new XMLHttpRequest();
   xhr.open (
     "GET",                               /* do NOT use escape() */
-    "https://api.github.com/" + url,
+    url,
     true
   );
   xhr.setRequestHeader('Accept', 'application/vnd.github.v3.'+media+'+json');
