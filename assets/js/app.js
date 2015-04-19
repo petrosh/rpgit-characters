@@ -23,7 +23,7 @@ function init() {
   // get name
   getAPI( "https://cdn.rawgit.com/" + path['username'] + "/" + path['reponame'] + "/born/character/name.log", getName, 'raw' );
   // get system version
-  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/version.log", callbackChances, 'raw' );
+  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/version.log", callbackVersion, 'raw' );
 
   // check if name (read character/name.log content)
   // /repos/:owner/:repo/contents/:path
@@ -52,6 +52,11 @@ function getChances( table ) {
   getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/v0.1/tables/" + table + ".json", callbackChances, 'raw' );
 }
 
+function callbackVersion() {
+  var resp = this.responseText;
+  console.log(resp);
+  systemVersion = resp;
+}
 function callbackChances() {
   var resp = this.responseText;
   resp = JSON.parse(resp);
