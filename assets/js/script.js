@@ -65,14 +65,13 @@ function selectPage() {
       break;
 
     case false:
-      // He went trough profile so we have upp
-      upp = diceProfiles( path.username + characterName + 'upp', profile );
 
       // Check term
       switch (pathHash.length) {
 
         case 1:
-          // Profile selected so show servces chances
+          // Profile selected so show services chances and we have upp
+          // upp = diceProfiles( path.username + characterName + 'upp', profile );
           profile = pathHash;
           tableChecked = 'service';
           getChances(tableChecked);
@@ -134,6 +133,7 @@ function fallbackRolls() {
   document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + tableChecked + ".json";
 }
 
+// Loop table and output chances
 function callbackChances() {
   var resp = this.responseText;
   resp = JSON.parse(resp);
@@ -187,6 +187,12 @@ function getProfiles() {
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
 
+//
+// function: diceProfiles (
+//  [0] seed: string,
+//  [1] unknown: , false = return array, index = return only one profile
+//  [2] hex: bool, true = hex
+// )
 function diceProfiles(  ){
   Math.seedrandom( arguments[0] );
   if ( arguments[1] ) {
@@ -221,6 +227,14 @@ function die( ){
 // return: (
 //  out = 1: success, 0: failed (number or array)
 // )
+// UPP ( "upp" /table [, profile /table index] )
+// "upp" table has 10 indexes of 6 throws of 2d
+// Return: 10 profiles for a seed or [, profile /table index] the UPP choosen
+//
+// Term ( "term" /table )
+// term table has 6 indexes of 3 or 5 throws of 2d
+// Return: 6 services for a seed or [, profile /table index] the First Term result
+//
 function dice( ){
   var out = []; result = [];
   var dices = arguments[0], value = arguments[1], success = arguments[2];
