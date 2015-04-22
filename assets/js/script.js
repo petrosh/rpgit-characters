@@ -32,6 +32,7 @@ Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
 });
 
 var char = [],
+  upp = [],
   characterName = '',
   ele = '',
   profile = '',
@@ -166,6 +167,7 @@ function callbackChances() {
       out[service] = partial;
     }
   }
+  console.log("*"+upp);
   ele = tchances( { chances: out, upp: upp, profile: profile } );
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
