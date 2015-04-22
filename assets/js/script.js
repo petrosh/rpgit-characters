@@ -37,8 +37,8 @@ var char = [],
   profile = '',
   service = '',
   systemVersion = '',
-  tableName = '',
-  tableLoaded = {}
+  tableChecked = '',
+  tableObj = {}
 ;
 
 init();
@@ -60,25 +60,28 @@ function selectPage() {
 
     case true:
       // Home page so show Profiles
-      getProfiles();
+      getProfiles(); // check characterName
       break;
 
     case false:
+      // He went trough profile so we have upp
+      upp = diceProfiles( path.username + characterName + 'upp', profile );
+
       // Check term
       switch (pathHash.length) {
 
         case 1:
           // Profile selected so show servces chances
           profile = pathHash;
-          tableName = 'service';
-          getChances(tableName);
+          tableChecked = 'service';
+          getChances(tableChecked);
           break;
 
         case 2:
           // Service selected so output results
           profile = pathHash.substring(0,1);
           service = pathHash.substring(1,1);
-          getRolls(tableName);
+          getRolls(tableChecked);
           break;
       }
       break;
@@ -92,7 +95,7 @@ function getChances( table ) {
 
 function getRolls( table ) {
   // Get a table from system
-  console.log(tableLoaded);
+  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + table + ".json", callbackRolls, fallbackRolls );
 }
 
 function callbackVersion() {
@@ -118,17 +121,26 @@ function fallbackName() {
   document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/" + path.username + "/" + path.reponame + "/v0.1/character/name.txt";
 }
 
+function callbackRolls() {
+  // Character name retrive and save then select Page to display
+  var resp = this.responseText;
+  tableObj = JSON.parse(resp);
+  console.log(tableObj, upp);
+}
+
+function fallbackRolls() {
+  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + tableChecked + ".json";
+}
+
 function callbackChances() {
   var resp = this.responseText;
-  tableLoaded = JSON.parse(resp);
-  // Get upp fresh again
-  upp = diceProfiles( path.username + characterName + 'upp', profile );
+  resp = JSON.parse(resp);
   var out = {};
   // Loop table rows: services
-  for (var service in tableLoaded){
-    if (tableLoaded.hasOwnProperty(service)) { // service = navy
+  for (var service in resp){
+    if (resp.hasOwnProperty(service)) { // service = navy
       var partial = {};
-      var obj = tableLoaded[service];
+      var obj = resp[service];
       // Loop services throws
       for (var throws in obj){
         if(obj.hasOwnProperty(throws)){ // throws=commission
@@ -159,7 +171,7 @@ function callbackChances() {
 }
 
 function fallbackChances() {
-  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + tableName + ".json";
+  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + tableChecked + ".json";
 }
 
 function getProfiles() {
@@ -197,6 +209,15 @@ function die( ){
   return out;
 }
 
+//
+// function: dice (
+//  dices = number of dices any throw,
+//  value = reference value for success (number or array),
+//  success = 0: exact value, 1: value or more, 0: exact value,
+// )
+// return: (
+//  out = 1: success, 0: failed (number or array)
+// )
 function dice( ){
   var out = []; result = [];
   var dices = arguments[0], value = arguments[1], success = arguments[2];
