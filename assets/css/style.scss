@@ -1,5 +1,5 @@
 a {
-  & :link, :visited {
+  a, & :link, :visited {
     color: blue;
   }
   & :hover {
