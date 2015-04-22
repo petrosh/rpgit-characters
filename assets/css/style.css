@@ -1,6 +1,6 @@
-a a, a :link, a :visited {
+a:link, a:visited {
   color: blue; }
-a :hover {
+a:hover {
   color: red; }
-a :active {
+a:active {
   color: white; }

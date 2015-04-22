@@ -1,11 +1,11 @@
 a {
-  a, & :link, :visited {
+  &:link, &:visited {
     color: blue;
   }
-  & :hover {
+  &:hover {
     color: red;
   }
-  & :active {
+  &:active {
     color: white;
   }
 }
