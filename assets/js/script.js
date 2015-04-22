@@ -31,7 +31,14 @@ Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
     }[operator];
 });
 
-var char = [], characterName = '', profile = '', service = '', systemVersion = ''; tableChecked = '';
+var char = [],
+  characterName = '',
+  ele = '',
+  profile = '',
+  service = '',
+  systemVersion = '',
+  tableChecked = ''
+;
 
 init();
 
@@ -40,7 +47,7 @@ function init() {
   window.onhashchange = function() {
     document.getElementsByTagName("section")[0].innerHTML = '';
     window.location.reload();
-  }
+  };
 
   // get system version
   getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/gh-pages/version.txt", callbackVersion, fallbackVersion );
@@ -48,7 +55,7 @@ function init() {
 
 function selectPage() {
 
-  switch (pathHash == '') {
+  switch (pathHash === '') {
 
     case true:
       // Home page so show Profiles
@@ -86,7 +93,7 @@ function callbackVersion() {
   var resp = this.responseText;
   systemVersion = resp;
   // get character name
-  getAPI( "https://cdn.rawgit.com/" + path['username'] + "/" + path['reponame'] + "/v0.1/character/name.txt", callbackName, fallbackName );
+  getAPI( "https://cdn.rawgit.com/" + path.username + "/" + path.reponame + "/v0.1/character/name.txt", callbackName, fallbackName );
 }
 
 function fallbackVersion() {
@@ -101,13 +108,13 @@ function callbackName() {
 }
 
 function fallbackName() {
-  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/" + path['username'] + "/" + path['reponame'] + "/v0.1/character/name.txt";
+  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/" + path.username + "/" + path.reponame + "/v0.1/character/name.txt";
 }
 
 function callbackChances() {
   var resp = this.responseText;
   resp = JSON.parse(resp);
-  upp = diceProfiles( path['username'] + characterName + 'upp', profile );
+  upp = diceProfiles( path.username + characterName + 'upp', profile );
   var out = {};
   for (var service in resp){
     if (resp.hasOwnProperty(service)) { // service = navy
@@ -138,7 +145,7 @@ function callbackChances() {
       out[service] = partial;
     }
   }
-  var ele = tchances( { chances: out, upp: upp, profile: profile } );
+  ele = tchances( { chances: out, upp: upp, profile: profile } );
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
 
@@ -148,11 +155,11 @@ function fallbackChances() {
 
 function getProfiles() {
   console.log("gp"+characterName);
-  if(characterName != ''){ // get profiles
-    char = diceProfiles( path['username'] + characterName + 'upp', false,1 );
-    var ele = thi( { name: characterName, profiles: char } );
+  if(characterName !== ''){ // get profiles
+    char = diceProfiles( path.username + characterName + 'upp', false,1 );
+    ele = thi( { name: characterName, profiles: char } );
   }else{
-    var ele = tname( path );
+    ele = tname( path );
   }
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
@@ -165,8 +172,8 @@ function diceProfiles(  ){
     }
     return char[arguments[1]];
   }else{
-    for (var p = 0; p < 10; p++) {
-      char[p] = { st: die(2, arguments[2]), de: die(2, arguments[2]), in: die(2, arguments[2]), en: die(2, arguments[2]), ed: die(2, arguments[2]), ss: die(2, arguments[2]) };
+    for (var p1 = 0; p1 < 10; p1++) {
+      char[p1] = { st: die(2, arguments[2]), de: die(2, arguments[2]), in: die(2, arguments[2]), en: die(2, arguments[2]), ed: die(2, arguments[2]), ss: die(2, arguments[2]) };
     }
     return char;
   }
@@ -183,17 +190,19 @@ function die( ){
 }
 
 function dice( ){
+  var out = []; result = [];
   var dices = arguments[0], value = arguments[1], success = arguments[2];
   if ( value.constructor === Array ) {
-    var out = [], result = [];
     for (var j = 0; j < value.length; j++) {
       for (var i = 0; i < dices; i++) {
         out[j] += Math.floor( Math.random() * 6 ) + 1;
       }
     }
   }else{
-    var out = 0, result = 0;
-    for (var i = 0; i < dices; i++) {
+    // Single throw
+    out = 0; result = 0;
+    var dicesum = 0;
+    for (var h = 0; h < dices; h++) {
       out += Math.floor( Math.random() * 6 ) + 1;
     }
     switch (success) {

@@ -8,6 +8,13 @@ rpgit characters generator and architecture
 - [getResponseHeader method](http://help.dottoro.com/ljxsrgqe.php)
 - [rawgit](https://rawgit.com/)
 
+## Contributing
+
+```shell
+$ gem install sass
+$ sass --watch css/style.scss
+```
+
 ## Handlebars helper
 
 ```liquid

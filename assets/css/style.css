@@ -1,0 +1,8 @@
+a :link, a :visited {
+  color: blue; }
+a :hover {
+  color: red; }
+a :active {
+  color: white; }
+
+/*# sourceMappingURL=style.css.map */
