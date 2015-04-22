@@ -181,3 +181,35 @@ function die( ){
   if(arguments[1])out = outhex;
   return out;
 }
+
+function dice( ){
+  var dices = arguments[0], value = arguments[1], success = arguments[2];
+  if ( value.constructor === Array ) {
+    var out = [], result = [];
+    for (var j = 0; j < value.length; j++) {
+      for (var i = 0; i < dices; i++) {
+        out[j] += Math.floor( Math.random() * 6 ) + 1;
+      }
+    }
+  }else{
+    var out = 0, result = 0;
+    for (var i = 0; i < dices; i++) {
+      out += Math.floor( Math.random() * 6 ) + 1;
+    }
+    switch (success) {
+
+      case 1: // or more
+        if ( out >= value ) return 1; else return 0;
+        break;
+
+      case -1: // or less
+        if ( out <= value ) return 1; else return 0;
+        break;
+
+      case 0: // exactly
+        if ( out == value ) return 1; else return 0;
+        break;
+    }
+  }
+  return out;
+}

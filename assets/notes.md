@@ -1,39 +1,28 @@
-# rpgit-characters
-rpgit characters generator and architecture
+## Text
 
-- [seed](http://davidbau.com/archives/2010/01/30/random_seeds_coded_hints_and_quintillions.html#more)
-- [json linter](https://www.jsoneditoronline.org/)
-- [handlebars](http://handlebarsjs.com/)
-- [handlebars helpers](https://github.com/diy/handlebars-helpers/tree/master/lib)
-- [getResponseHeader method](http://help.dottoro.com/ljxsrgqe.php)
-- [rawgit](https://rawgit.com/)
+- Distribuited Realtime Role Playing Game on Git (with a fork-n-play attitude)
 
-## Handlebars helper
+- **RPG deserve a new tool**: Git is a software that let people work on a code project (repository) simultanously and in remote; it keeps track of every change by storing a screenshot of every file in that moment.
 
-```liquid
-{{{link "See more..." story.url}}}
-```
+### Repositories
 
-```javascript
-Handlebars.registerHelper('link', function(text, url) {
-  url = Handlebars.escapeExpression(url);
-  text = Handlebars.escapeExpression(text);
+  - (rpgit: rpgit website and rpgit-system portal)
 
-  return new Handlebars.SafeString(
-    "<a href='" + url + "'>" + text + "</a>"
-  );
-});
-```
+  - rpgit-system: Blank engine for setup, here are basic **settings** of the game, **entities** with description and general parameters, **tables** consulted by any client, and the function of every dice roll.
 
-## Permalink to a file in a specific commit
-For a permanent link to the specific version of a file that you see, instead of using a branch name in the URL (i.e. the master part in the example above), put a commit id. This will permanently link to the exact version of the file in that commit.
+    - online: gh-pages is public, unless set to private in settings, so only collaborators will be accepted as players when forking character repository. Shown is everything, players, events and outcomes, tables and settings.
 
-Instead of  
-[github/hubot/blob/master/README.md](https://github.com/github/hubot/blob/master/README.md)
+  - rpgit-character: Clients with character and events data
 
-Use  
-[github/hubot/blob/ed25584f5ac2520a6c28547ffd0961c7abd7ea49/README.md](https://github.com/github/hubot/blob/ed25584f5ac2520a6c28547ffd0961c7abd7ea49/README.md)
+### What now
 
+- **Play** You can join ongoing RPGit games, just fork rpgit-charactes-scifi or rpgit-character-fantasy or another (list).
+
+- **Run your own copy** of any RPGit, just fork the system repository and the character repository and you are ready to run it (or tweek tables and settings for your needs).
+
+- **How this can distribute RPGaming**: An RPG is a collection of rules and tables and dice rolls generating a unique storytelling in any conceived environment. Data crunching and file versioning is everyday food for the power of Git.
+
+- **How can all happend on a browser**: Git system is brougth on the web by GitHub among others, with a free account [github.com]() you can fork-n-play in a click:
 
 # Character
 All characters begin the game the same way: untrained, inexperienced, and about 18 years of age.
