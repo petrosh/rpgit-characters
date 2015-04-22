@@ -123,9 +123,10 @@ function fallbackName() {
 }
 
 function callbackRolls() {
-  // Character name retrive and save then select Page to display
+  // Character name Profile and Service selected, resolve table
   var resp = this.responseText;
   tableObj = JSON.parse(resp);
+  // now resolve table against upp
   console.log(tableObj, upp);
 }
 
