@@ -21,7 +21,7 @@ function getAPI(url, callback, media, fallback) {
         fallback.apply(xhr);
       }
     }
-  }
+  };
   // send the request *after* the event handler is defined
   xhr.send();
 }

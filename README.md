@@ -8,30 +8,6 @@ rpgit characters generator and architecture
 - [getResponseHeader method](http://help.dottoro.com/ljxsrgqe.php)
 - [rawgit](https://rawgit.com/)
 
-## Contributing
-
-```shell
-$ gem install sass
-$ sass --watch css/style.scss
-```
-
-## Handlebars helper
-
-```liquid
-{{{link "See more..." story.url}}}
-```
-
-```javascript
-Handlebars.registerHelper('link', function(text, url) {
-  url = Handlebars.escapeExpression(url);
-  text = Handlebars.escapeExpression(text);
-
-  return new Handlebars.SafeString(
-    "<a href='" + url + "'>" + text + "</a>"
-  );
-});
-```
-
 ## Permalink to a file in a specific commit
 For a permanent link to the specific version of a file that you see, instead of using a branch name in the URL (i.e. the master part in the example above), put a commit id. This will permanently link to the exact version of the file in that commit.
 

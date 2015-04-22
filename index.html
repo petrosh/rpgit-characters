@@ -16,7 +16,8 @@
 	<script type="text/x-handlebars-template" id="thi">
 		<h1>Hi {{name}}</h1>
 		<h2>Here are 10 profiles approved by Imperium for you</h2>
-		{{#profiles}}<code>{{st}}{{de}}{{in}}{{en}}{{ed}}{{ss}} <a href="#{{@index}}">Profile {{@index}}</a>{{#unless @last}}<br>{{/unless}}</code>{{/profiles}}
+		<pre>{{#profiles}}{{st}}{{de}}{{in}}{{en}}{{ed}}{{ss}} <a href="#{{@index}}">Profile {{@index}}</a>{{#unless @last}}
+{{/unless}}{{/profiles}}</pre>
 	</script>
 
 	<script type="text/x-handlebars-template" id="tchances">

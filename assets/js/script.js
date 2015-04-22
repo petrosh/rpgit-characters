@@ -37,7 +37,8 @@ var char = [],
   profile = '',
   service = '',
   systemVersion = '',
-  tableChecked = ''
+  tableName = '',
+  tableLoaded = {}
 ;
 
 init();
@@ -69,14 +70,15 @@ function selectPage() {
         case 1:
           // Profile selected so show servces chances
           profile = pathHash;
-          tableChecked = 'service';
-          getChances(tableChecked);
+          tableName = 'service';
+          getChances(tableName);
           break;
 
         case 2:
-          // Service selected so ask for reenlist
+          // Service selected so output results
           profile = pathHash.substring(0,1);
           service = pathHash.substring(1,1);
+          getRolls(tableName);
           break;
       }
       break;
@@ -86,6 +88,11 @@ function selectPage() {
 function getChances( table ) {
   // Get a table from system
   getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + table + ".json", callbackChances, fallbackChances );
+}
+
+function getRolls( table ) {
+  // Get a table from system
+  console.log(tableLoaded);
 }
 
 function callbackVersion() {
@@ -113,17 +120,19 @@ function fallbackName() {
 
 function callbackChances() {
   var resp = this.responseText;
-  resp = JSON.parse(resp);
+  tableLoaded = JSON.parse(resp);
+  // Get upp fresh again
   upp = diceProfiles( path.username + characterName + 'upp', profile );
   var out = {};
-  for (var service in resp){
-    if (resp.hasOwnProperty(service)) { // service = navy
+  // Loop table rows: services
+  for (var service in tableLoaded){
+    if (tableLoaded.hasOwnProperty(service)) { // service = navy
       var partial = {};
-      var obj = resp[service];
+      var obj = tableLoaded[service];
+      // Loop services throws
       for (var throws in obj){
         if(obj.hasOwnProperty(throws)){ // throws=commission
           var thro = obj[throws]; // thro = { 2d6: "10+", +1: "ss9+" }
-          // console.log(throws, thro);
           var val = 0;
           for (var tt in thro){
             if(thro.hasOwnProperty(tt)){ // tt = 2d6, +1, ...
@@ -150,11 +159,10 @@ function callbackChances() {
 }
 
 function fallbackChances() {
-  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + tableChecked + ".json";
+  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + tableName + ".json";
 }
 
 function getProfiles() {
-  console.log("gp"+characterName);
   if(characterName !== ''){ // get profiles
     char = diceProfiles( path.username + characterName + 'upp', false,1 );
     ele = thi( { name: characterName, profiles: char } );
