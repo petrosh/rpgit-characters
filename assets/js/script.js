@@ -52,7 +52,7 @@ function init() {
   };
 
   // get system version
-  getAPI( "https://rawgit.com/petrosh/rpgit-system/gh-pages/version.txt", callbackVersion, fallbackVersion );
+  getAPI( "https://rawgit.com/petrosh/rpgit-system/gh-pages/version.json", callbackVersion, fallbackVersion );
 }
 
 function selectPage() {
@@ -101,6 +101,7 @@ function getRolls( table ) {
 function callbackVersion() {
   // System version retrive and save then check character name
   var resp = this.responseText;
+  console.log(JSON.parse(resp));
   systemVersion = resp;
   // get character name
   getAPI( "https://cdn.rawgit.com/" + path.username + "/" + path.reponame + "/v0.1/character/name.txt", callbackName, fallbackName );
