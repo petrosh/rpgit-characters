@@ -52,7 +52,7 @@ function init() {
   };
 
   // get system version
-  getAPI( "https://raw.githubusercontent.com/petrosh/rpgit-system/gh-pages/version.txt", callbackVersion, fallbackVersion );
+  getAPI( "https://raw.githubusercontent.com/petrosh/rpgit-system/gh-pages/version.txt", callbackVersion, 'raw', fallbackVersion );
 }
 
 function selectPage() {
@@ -90,12 +90,12 @@ function selectPage() {
 
 function getChances( table ) {
   // Get a table from system
-  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + table + ".json", callbackChances, fallbackChances );
+  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + table + ".json", callbackChances, false, fallbackChances );
 }
 
 function getRolls( table ) {
   // Get a table from system
-  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + table + ".json", callbackRolls, fallbackRolls );
+  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + table + ".json", callbackRolls, false, fallbackRolls );
 }
 
 function callbackVersion() {
@@ -103,7 +103,7 @@ function callbackVersion() {
   var resp = this.responseText;
   systemVersion = resp;
   // get character name
-  getAPI( "https://cdn.rawgit.com/" + path.username + "/" + path.reponame + "/v0.1/character/name.txt", callbackName, fallbackName );
+  getAPI( "https://cdn.rawgit.com/" + path.username + "/" + path.reponame + "/v0.1/character/name.txt", callbackName, false, fallbackName );
 }
 
 function fallbackVersion() {
