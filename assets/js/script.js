@@ -39,7 +39,8 @@ var char = [],
   service = '',
   systemVersion = '',
   tableChecked = '',
-  tableObj = {}
+  tableObj = {},
+  lastVersionSha = 0
 ;
 
 init();
@@ -90,19 +91,19 @@ function selectPage() {
 
 function getChances( table ) {
   // Get a table from system
-  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + table + ".json", callbackChances, fallbackChances );
+  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + lastVersionSha + "/tables/" + table + ".json", callbackChances, fallbackChances );
 }
 
 function getRolls( table ) {
   // Get a table from system
-  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + table + ".json", callbackRolls, fallbackRolls );
+  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + lastVersionSha + "/tables/" + table + ".json", callbackRolls, fallbackRolls );
 }
 
 function callbackVersion() {
   // System version retrive and save then check character name
   var resp = this.responseText;
   var cosa = JSON.parse(resp);
-  console.log( cosa[0].commit.sha );
+  var lastVersionSha = cosa[0].commit.sha;
   systemVersion = resp;
   // get character name
   getAPI( "https://cdn.rawgit.com/" + path.username + "/" + path.reponame + "/v0.1/character/name.txt", callbackName, fallbackName );
