@@ -5,7 +5,7 @@ function getAPI(url, callback, media, fallback) {
     url,
     true
   );
-  if(media) xhr.setRequestHeader('Accept', 'application/vnd.github.v3.'+media+'+json');
+  if(media) xhr.setRequestHeader('Access-Control-Allow-Origin', 'http://petrosh.github.io');
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       // defensive check
