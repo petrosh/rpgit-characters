@@ -37,7 +37,6 @@ var char = [],
   ele = '',
   profile = '',
   service = '',
-  systemVersion = '',
   tableChecked = '',
   tableObj = {},
   lastVersionSha = 0
@@ -104,7 +103,6 @@ function callbackVersion() {
   var resp = this.responseText;
   var cosa = JSON.parse(resp);
   lastVersionSha = cosa[0].commit.sha;
-  systemVersion = resp;
   // get character name
   getAPI( "https://cdn.rawgit.com/" + path.username + "/" + path.reponame + "/v0.1/character/name.txt", callbackName, fallbackName );
 }
@@ -133,7 +131,7 @@ function callbackRolls() {
 }
 
 function fallbackRolls() {
-  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + tableChecked + ".json";
+  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/petrosh/rpgit-system/" + lastVersionSha + "/tables/" + tableChecked + ".json";
 }
 
 // Loop table and output chances
@@ -148,19 +146,23 @@ function callbackChances() {
       var obj = resp[service];
       // Loop services throws
       for (var throws in obj){
-        if(obj.hasOwnProperty(throws)){ // throws=commission
-          var thro = obj[throws]; // thro = { 2d6: "10+", +1: "ss9+" }
+        if(obj.hasOwnProperty(throws) && throws !=='description'){ // throws=enlist
+          var thro = obj[throws]; // thro = {"success": "8+","DM": {"+1": "in8+","+2": "ed9+"} }
           var val = 0;
           for (var tt in thro){
-            if(thro.hasOwnProperty(tt)){ // tt = 2d6, +1, ...
-              var key = thro[tt]; // key = 10+, ss9+, ...
-              if(tt=="2d6"){
+            if(thro.hasOwnProperty(tt)){ // tt = success, DM, ...
+              var key = thro[tt]; // key = 8+, {"+1": "in8+"}, ...
+              if(tt=="success"){
                 val = parseInt( key.substring(0,key.length-1) );
               }else{
-                var att = upp[key.substring(0,2)];
-                // console.log("att " + att + " " + parseInt( key.substring(2,key.length-1)));
-                if( att >= parseInt( key.substring(2,key.length-1) ) ){
-                  val -= parseInt(tt);
+                for (var dm in key){
+                  if (key.hasOwnProperty(dm)) { // dm = +1, +2, ...
+                    var sign = key[dm]; // sign = "in8+", "de9+", ...
+                    var att = upp[sign.substring(0,2)];
+                    if( att >= parseInt( sign.substring(2,sign.length-1) ) ){
+                      val -= parseInt(tt);
+                    }
+                  }
                 }
               }
             }
@@ -177,7 +179,7 @@ function callbackChances() {
 }
 
 function fallbackChances() {
-  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + tableChecked + ".json";
+  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/petrosh/rpgit-system/" + lastVersionSha + "/tables/" + tableChecked + ".json";
 }
 
 function getProfiles() {
