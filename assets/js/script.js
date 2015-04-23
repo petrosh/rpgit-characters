@@ -52,7 +52,7 @@ function init() {
   };
 
   // get system version
-  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/gh-pages/version.txt", callbackVersion, fallbackVersion );
+  getAPI( "https://rawgit.com/petrosh/rpgit-system/gh-pages/version.txt", callbackVersion, fallbackVersion );
 }
 
 function selectPage() {
