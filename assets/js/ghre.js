@@ -5,7 +5,7 @@ function getAPI(url, callback, fallback) {
     url,
     true
   );
-  // xhr.setRequestHeader('Accept', 'application/vnd.github.v3.'+media+'+json');
+  xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://render.githubusercontent.com');
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       // defensive check
