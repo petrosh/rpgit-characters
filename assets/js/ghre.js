@@ -1,11 +1,11 @@
-function getAPI(url, callback, media, fallback) {
+function getAPI(url, callback, fallback) {
   var xhr = new XMLHttpRequest();
   xhr.open (
     "GET",                               /* do NOT use escape() */
     url,
     true
   );
-  if(media) xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://render.githubusercontent.com');
+  // xhr.setRequestHeader('Accept', 'application/vnd.github.v3.'+media+'+json');
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       // defensive check
