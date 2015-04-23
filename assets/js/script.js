@@ -67,13 +67,13 @@ function selectPage() {
     case false:
 
       // Check term
+      tableChecked = 'term';
       switch (pathHash.length) {
 
         case 1:
           // Profile selected so show services chances and we have upp
           // upp = diceProfiles( path.username + characterName + 'upp', profile );
           profile = pathHash;
-          tableChecked = 'service';
           getChances(tableChecked);
           break;
 
@@ -229,6 +229,7 @@ function die( ){
 // )
 // UPP ( "upp" /table [, profile /table index] )
 // "upp" table has 10 indexes of 6 throws of 2d
+// Loop:
 // Return: 10 profiles for a seed or [, profile /table index] the UPP choosen
 //
 // Term ( "term" /table )

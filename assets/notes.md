@@ -1,3 +1,5 @@
+- DNS: rpgit.space €4,54/year
+
 ## Text
 
 - Distribuited Realtime Role Playing Game on Git (with a fork-n-play attitude)
