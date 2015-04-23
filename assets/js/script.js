@@ -102,7 +102,7 @@ function callbackVersion() {
   // System version retrive and save then check character name
   var resp = this.responseText;
   var cosa = JSON.parse(resp);
-  console.log( cosa[0].commit );
+  console.log( cosa[0].commit.sha );
   systemVersion = resp;
   // get character name
   getAPI( "https://cdn.rawgit.com/" + path.username + "/" + path.reponame + "/v0.1/character/name.txt", callbackName, fallbackName );
