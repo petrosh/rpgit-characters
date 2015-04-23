@@ -52,7 +52,7 @@ function init() {
   };
 
   // get system version
-  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/gh-pages/version.txt", callbackVersion, fallbackVersion );
+  getAPI( "https://rawgit.com/petrosh/rpgit-system/gh-pages/version.txt", callbackVersion, fallbackVersion );
 }
 
 function selectPage() {
@@ -90,12 +90,12 @@ function selectPage() {
 
 function getChances( table ) {
   // Get a table from system
-  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + table + ".json", callbackChances, fallbackChances );
+  getAPI( "https://rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + table + ".json", callbackChances, fallbackChances );
 }
 
 function getRolls( table ) {
   // Get a table from system
-  getAPI( "https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + table + ".json", callbackRolls, fallbackRolls );
+  getAPI( "https://rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + table + ".json", callbackRolls, fallbackRolls );
 }
 
 function callbackVersion() {
@@ -103,11 +103,11 @@ function callbackVersion() {
   var resp = this.responseText;
   systemVersion = resp;
   // get character name
-  getAPI( "https://cdn.rawgit.com/" + path.username + "/" + path.reponame + "/v0.1/character/name.txt", callbackName, fallbackName );
+  getAPI( "https://rawgit.com/" + path.username + "/" + path.reponame + "/v0.1/character/name.txt", callbackName, fallbackName );
 }
 
 function fallbackVersion() {
-  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/petrosh/rpgit-system/gh-pages/version.txt";
+  document.getElementsByTagName("section")[0].innerHTML = "404: https://rawgit.com/petrosh/rpgit-system/gh-pages/version.txt";
 }
 
 function callbackName() {
@@ -118,7 +118,7 @@ function callbackName() {
 }
 
 function fallbackName() {
-  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/" + path.username + "/" + path.reponame + "/v0.1/character/name.txt";
+  document.getElementsByTagName("section")[0].innerHTML = "404: https://rawgit.com/" + path.username + "/" + path.reponame + "/v0.1/character/name.txt";
 }
 
 function callbackRolls() {
@@ -130,7 +130,7 @@ function callbackRolls() {
 }
 
 function fallbackRolls() {
-  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + tableChecked + ".json";
+  document.getElementsByTagName("section")[0].innerHTML = "404: https://rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + tableChecked + ".json";
 }
 
 // Loop table and output chances
@@ -174,7 +174,7 @@ function callbackChances() {
 }
 
 function fallbackChances() {
-  document.getElementsByTagName("section")[0].innerHTML = "404: https://cdn.rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + tableChecked + ".json";
+  document.getElementsByTagName("section")[0].innerHTML = "404: https://rawgit.com/petrosh/rpgit-system/" + systemVersion + "/tables/" + tableChecked + ".json";
 }
 
 function getProfiles() {
