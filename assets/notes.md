@@ -1,3 +1,36 @@
+### RPGit
+
+- robots URP, Patrons, new skills
+- alien races service, D&D, race > human > service tab
+- names list?
+- http://www.drivethrurpg.com/browse.php?filters=0_0_10134_0_0
+- cargo with zest
+
+### code
+
+- include dice.js from system
+- dice( 2, 6, success or [ success ], plus or minus or exact )
+- chances with handlebars
+
+### systems
+
+- do you auth? why?
+
+- entity: navy(patrol...), army, reenlist(you try)
+
+- http://www.sjgames.com/toon/
+- 007
+- x-files
+- UFO
+
+### fork-n-play
+
+### GIST
+
+- please edit in place this fucking gist
+- dark
+- save a la Drive
+
 - DNS: rpgit.space €4,54/year
 
 ## Text
