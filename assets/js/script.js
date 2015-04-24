@@ -7,6 +7,7 @@ var path = { username: pathArray[0], reponame: 'rpgit-characters' };
 var thi = Handlebars.compile( document.getElementById("thi").innerHTML );
 var tname = Handlebars.compile(document.getElementById("tname").innerHTML);
 var tchances = Handlebars.compile(document.getElementById("tchances").innerHTML);
+var templateTable = Handlebars.compile(document.getElementById("templateTable").innerHTML);
 var tservice = Handlebars.registerPartial("services", document.getElementById("tservices").innerHTML);
 // Helpers
 // Capitalize
@@ -170,11 +171,14 @@ function callbackChances() {
           partial[throws] = val;
         }
       }
+      partial.description = obj.description;
       out[service] = partial;
     }
   }
   console.log("*"+upp);
+  // ele = tchances( { chances: out, upp: upp, profile: profile } );
   ele = tchances( { chances: out, upp: upp, profile: profile } );
+
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
 

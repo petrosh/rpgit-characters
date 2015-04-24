@@ -33,6 +33,15 @@
 
 - DNS: rpgit.space €4,54/year
 
+---
+
+## PATRONS
+
+Career type introduce you to **Patron Table**.
+
+> The key to adventure in Traveller is the patron.
+> A non-player character used by the referee to create an encounter for player characters. Patrons are usually used to motivate players to move in a direction more fully in tune with the wishes of the referee, or to provide income or diversion for player characters.
+
 ## Text
 
 - Distribuited Realtime Role Playing Game on Git (with a fork-n-play attitude)

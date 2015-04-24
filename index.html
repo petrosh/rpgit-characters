@@ -26,6 +26,27 @@
 		<div>{{#each chances}}<h3>{{@key}}</h3>{{> services}}<br><a href="#{{../profile}}{{@index}}">Try enlist {{capitalize @key}}</a>{{#unless @last}}<br>{{/unless}}{{/each}}</dive>
 	</script>
 
+	<script type="text/x-handlebars-template" id="templateTable">
+		<h1>Ok {{upp.st}}{{upp.de}}{{upp.in}}{{upp.en}}{{upp.ed}}{{upp.ss}}</h1>
+		<h2>Here are chances in various services</h2>
+		{{#each column}}
+		<article>
+			<header>
+				<h3>{{@key}}</h3>
+			</header>
+			<dl>
+				{{#each this}}
+					<dt{{#unless @first}}class="first"{{/unless}}>
+						<dt>{{@key}}</dt>
+						<dd>{{this}}</dd>
+					</dt>
+				{{/each}}
+			</dl>
+			<p><a href="#{{../profile}}{{@index}}">Try enlist {{capitalize @key}}</a></p>
+		</article>
+		{{/each}}
+	</script>
+
 <script type="text/x-handlebars-template" id="tservices">
 {{#each .}}{{#unless @first}}, {{/unless}}{{capitalize @key}}: {{this}}{{/each}}</script>
 
