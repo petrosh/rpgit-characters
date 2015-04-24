@@ -105,6 +105,7 @@ function callbackVersion() {
   var cosa = JSON.parse(resp);
   lastVersionSha = cosa[0].commit.sha;
   // get character name
+  console.log({sha:lastVersionSha});
   getAPI( "https://cdn.rawgit.com/" + path.username + "/" + path.reponame + "/v0.1/character/name.txt", callbackName, fallbackName );
 }
 
