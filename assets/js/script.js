@@ -56,7 +56,17 @@ function init() {
   //tag
   // getAPIgithub( "https://api.github.com/repos/petrosh/rpgit-system/tags", callbackVersion, fallbackVersion );
   // or commit?
-  getAPIgithub( "https://api.github.com/repos/petrosh/rpgit-system/commits", callbackVersion, fallbackVersion );
+
+  // CHECK sessionStorage
+  if (sessionStorage.getItem('system-sha') === null){
+    getAPIgithub( "https://api.github.com/repos/petrosh/rpgit-system/commits", callbackVersion, fallbackVersion );
+  }else{
+    if(sessionStorage.getItem('timestamp') < new Date() ){
+      console.log('time expired');
+    }else{
+      console.log('still less');
+    }
+  }
 }
 
 function selectPage() {
@@ -108,6 +118,11 @@ function callbackVersion() {
   var cosa = JSON.parse(resp);
   console.log({sha:cosa[0].sha});
   lastVersionSha = cosa[0].sha;
+
+  // STORE IN sessionStorage
+  sessionStorage.setItem('system-sha', lastVersionSha);
+  sessionStorage.setItem('timestamp',  Date.now() );
+
   // Dynamic Javascript Insertion: petrosh/rpgit-system/scripts/diceroll.js
   dynamicInsert(lastVersionSha);
   // get character name
@@ -115,6 +130,7 @@ function callbackVersion() {
 }
 
 function dynamicInsert( shaFinished ){
+  // http://www.hunlock.com/blogs/Howto_Dynamically_Insert_Javascript_And_CSS
   var headID = document.getElementsByTagName("head")[0];
   var newScript = document.createElement('script');
   newScript.type = 'text/javascript';

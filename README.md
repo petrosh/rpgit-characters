@@ -9,6 +9,10 @@ rpgit characters generator and architecture
 - [rawgit](https://rawgit.com/)
 - [jshint](http://jshint.com/docs/)
 
+## Links tldrify
+
+- [Unauthenticated API requests will be limited to 60 per hour](https://tldrify.com/8cr)
+
 ## Permalink to a file in a specific commit
 For a permanent link to the specific version of a file that you see, instead of using a branch name in the URL (i.e. the master part in the example above), put a commit id. This will permanently link to the exact version of the file in that commit.
 
