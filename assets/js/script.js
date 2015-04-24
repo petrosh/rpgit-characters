@@ -53,7 +53,10 @@ function init() {
   };
 
   // get system version
-  getAPIgithub( "https://api.github.com/repos/petrosh/rpgit-system/tags", callbackVersion, fallbackVersion );
+  //tag
+  // getAPIgithub( "https://api.github.com/repos/petrosh/rpgit-system/tags", callbackVersion, fallbackVersion );
+  // or commit?
+  getAPIgithub( "https://api.github.com/repos/petrosh/rpgit-system/commits", callbackVersion, fallbackVersion );
 }
 
 function selectPage() {

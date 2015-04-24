@@ -1,6 +1,8 @@
 PUT  THE  SHA  INTO  LINK
 =========================
 
+# Game versioning is system last commit?
+
 ### RPGit
 
 - robots URP, Patrons, new skills
