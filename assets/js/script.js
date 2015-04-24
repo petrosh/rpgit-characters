@@ -146,6 +146,8 @@ function callbackChances() {
     if (resp.hasOwnProperty(service)) { // service = navy
       var partial = {};
       var obj = resp[service];
+      // Add column description as first (out of roll loop)
+      partial.description = obj.description;
       // Loop services throws
       for (var throws in obj){
         if(obj.hasOwnProperty(throws) && throws !=='description'){ // throws=enlist
@@ -172,7 +174,6 @@ function callbackChances() {
           partial[throws] = val;
         }
       }
-      partial.description = obj.description;
       out[service] = partial;
     }
   }
