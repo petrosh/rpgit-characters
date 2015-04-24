@@ -123,7 +123,7 @@ function callbackVersion() {
 
   // STORE IN sessionStorage
   sessionStorage.setItem('system-sha', lastVersionSha);
-  sessionStorage.setItem('timestamp', addMinutes(date, minutes) );
+  sessionStorage.setItem('timestamp', addMinutes(1) );
 
   // Dynamic Javascript Insertion: petrosh/rpgit-system/scripts/diceroll.js
   dynamicInsert(lastVersionSha);
