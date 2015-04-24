@@ -63,10 +63,10 @@ function init() {
   }else{
     var diff=Math.abs( new Date() - sessionStorage.getItem('timestamp') );
     if( diff > 0 ){
-      console.log('time expired');
+      console.log('sha expired, get new');
       getAPIgithub( "https://api.github.com/repos/petrosh/rpgit-system/commits", callbackVersion, fallbackVersion );
     }else{
-      console.log('still less');
+      console.log('still less '+diff);
     }
   }
 }
