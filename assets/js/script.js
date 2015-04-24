@@ -175,9 +175,9 @@ function callbackChances() {
       out[service] = partial;
     }
   }
-  console.log("*"+upp);
+  console.log({ column: out, upp: upp, profile: profile });
   // ele = tchances( { chances: out, upp: upp, profile: profile } );
-  ele = templateTable( { chances: out, upp: upp, profile: profile } );
+  ele = templateTable( { column: out, upp: upp, profile: profile } );
 
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
