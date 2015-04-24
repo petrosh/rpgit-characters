@@ -64,6 +64,7 @@ function init() {
     var diff=Math.abs( new Date() - sessionStorage.getItem('timestamp') );
     if( diff > 0 ){
       console.log('time expired');
+      getAPIgithub( "https://api.github.com/repos/petrosh/rpgit-system/commits", callbackVersion, fallbackVersion );
     }else{
       console.log('still less');
     }
@@ -122,12 +123,18 @@ function callbackVersion() {
 
   // STORE IN sessionStorage
   sessionStorage.setItem('system-sha', lastVersionSha);
-  sessionStorage.setItem('timestamp',  Date.now() );
+  sessionStorage.setItem('timestamp', addMinutes(date, minutes) );
 
   // Dynamic Javascript Insertion: petrosh/rpgit-system/scripts/diceroll.js
   dynamicInsert(lastVersionSha);
   // get character name
   getAPI( "https://cdn.rawgit.com/" + path.username + "/" + path.reponame + "/v0.1/character/name.txt", callbackName, fallbackName );
+}
+
+function addMinutes( minutes ){
+  var cosa = new Date(new Date().getTime() + minutes*60000);
+  console.log(cosa);
+  return cosa;
 }
 
 function dynamicInsert( shaFinished ){
