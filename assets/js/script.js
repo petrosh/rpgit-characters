@@ -61,7 +61,8 @@ function init() {
   if (sessionStorage.getItem('system-sha') === null){
     getAPIgithub( "https://api.github.com/repos/petrosh/rpgit-system/commits", callbackVersion, fallbackVersion );
   }else{
-    var diff = sessionStorage.getItem('timestamp') - Date().getTime();
+    var now = new Date().getTime();
+    var diff = sessionStorage.getItem('timestamp') - now;
     if( diff < 0 ){
       console.log('sha expired, get new');
       getAPIgithub( "https://api.github.com/repos/petrosh/rpgit-system/commits", callbackVersion, fallbackVersion );
