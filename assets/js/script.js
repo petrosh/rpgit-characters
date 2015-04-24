@@ -108,8 +108,23 @@ function callbackVersion() {
   var cosa = JSON.parse(resp);
   console.log({sha:cosa[0].sha});
   lastVersionSha = cosa[0].sha;
+  // Dynamic Javascript Insertion: petrosh/rpgit-system/scripts/diceroll.js
+  dynamicInsert(lastVersionSha);
   // get character name
   getAPI( "https://cdn.rawgit.com/" + path.username + "/" + path.reponame + "/v0.1/character/name.txt", callbackName, fallbackName );
+}
+
+function dynamicInsert( shaFinished ){
+  var headID = document.getElementsByTagName("head")[0];
+  var newScript = document.createElement('script');
+  newScript.type = 'text/javascript';
+  newScript.onload=scriptLoaded;
+  newScript.src = "https://cdn.rawgit.com/petrosh/rpgit-system/" + lastVersionSha + "/scripts/diceroll.js";
+  headID.appendChild(newScript);
+}
+
+function scriptLoaded(){
+  console.log('scriptLoaded');
 }
 
 function fallbackVersion() {
