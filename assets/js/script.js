@@ -177,7 +177,7 @@ function callbackChances() {
   }
   console.log("*"+upp);
   // ele = tchances( { chances: out, upp: upp, profile: profile } );
-  ele = tchances( { chances: out, upp: upp, profile: profile } );
+  ele = templateTable( { chances: out, upp: upp, profile: profile } );
 
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
