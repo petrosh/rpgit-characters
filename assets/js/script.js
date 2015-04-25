@@ -122,7 +122,7 @@ function callbackVersion() {
 
   // STORE sessionStorage
   sessionStorage.setItem('system-sha', lastVersionSha);
-  sessionStorage.setItem('timestamp', addMinutes(1) );
+  sessionStorage.setItem('timestamp', addMinutes(5) );
 
   // Proceed: inject scripts/version and get Character Name
   gotVersion();
