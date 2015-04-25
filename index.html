@@ -25,7 +25,7 @@
 	</script>
 
 	<script type="text/x-handlebars-template" id="templateTable">
-		<h1>Ok {{upp.st}}{{upp.de}}{{upp.in}}{{hex upp.en}}{{upp.ed}}{{upp.ss}}</h1>
+		<h1>Ok {{hex upp.st}}{{hex upp.de}}{{hex upp.in}}{{hex upp.en}}{{hex upp.ed}}{{hex upp.ss}}</h1>
 		<h2>Here are chances in various services</h2>
 		{{#each column}}
 		<article>
@@ -38,7 +38,7 @@
 					{{#unless @first}}<dt>{{@key}}</dt><dd>{{this}}</dd>{{/unless}}
 				{{/each}}
 			</dl>
-			<p><a href="#{{../profile}}{{@index}}">Try enlist {{capitalize @key}}</a></p>
+			<p>Try enlist <a href="#{{../profile}}{{@index}}">{{capitalize @key}}</a></p>
 		</article>
 		{{/each}}
 	</script>
