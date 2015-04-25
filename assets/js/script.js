@@ -120,7 +120,6 @@ function callbackVersion() {
   // System version retrive and save then check character name
   var resp = this.responseText;
   var cosa = JSON.parse(resp);
-  console.log({sha:cosa[0].sha});
   lastVersionSha = cosa[0].sha;
 
   // STORE sessionStorage
@@ -156,7 +155,7 @@ function dynamicInsert( shaFinished ){
 }
 
 function scriptLoaded(){
-  console.log('scriptLoaded');
+  console.log('systemScriptLoaded');
 }
 
 function fallbackVersion() {
@@ -229,7 +228,7 @@ function callbackChances() {
   }
   console.log({ column: out, upp: upp, profile: profile });
   // ele = tchances( { chances: out, upp: upp, profile: profile } );
-  ele = templateTable( { column: out, upp: upp, profile: profile } );
+  ele = templateTable( { column: out, upp: char, profile: profile } );
 
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
