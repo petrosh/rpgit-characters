@@ -23,20 +23,20 @@
 	<script type="text/x-handlebars-template" id="templateTable">
 		<h1>Ok {{upp.profile.st}}{{upp.profile.de}}{{upp.profile.in}}{{upp.profile.en}}{{upp.profile.ed}}{{upp.profile.ss}}</h1>
 		<h2>Here are chances in various services</h2>
-		{{#column}}
+		{{#each column}}
 		<article>
 			<header>
 				<h3>{{@key}}</h3>
 				<p>{{this.description}}</p>
 			</header>
 			<dl>
-				{{#this}}
+				{{#each this}}
 					{{#unless @first}}<dt>{{@key}}</dt><dd>{{this}}</dd>{{/unless}}
-				{{/this}}
+				{{/each}}
 			</dl>
 			<p><a href="#{{../profile}}{{@index}}">Try enlist capitalize{{@key}}</a></p>
 		</article>
-		{{/column}}
+		{{/each}}
 	</script>
 
 	<script type="text/x-handlebars-template" id="tt1">
