@@ -175,7 +175,7 @@ function callbackRolls() {
   var resp = this.responseText;
   tableObj = JSON.parse(resp);
   // now resolve table against upp
-  console.log(tableObj, char[profile], serviceChoosen);
+  console.log(tableObj[serviceChoosen], char[profile]);
 }
 
 function fallbackRolls() {
