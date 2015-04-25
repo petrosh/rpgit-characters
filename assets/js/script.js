@@ -84,18 +84,21 @@ function selectPage() {
 
       // Check term
       tableChecked = 'term';
+
       switch (pathHash.length) {
 
         case 1:
-          // Profile selected so show services chances and we have upp
-          upp = diceProfiles( path.username + characterName + 'upp', profile );
           profile = parseInt(pathHash);
+          // Profile selected so populate UPP
+          upp = diceProfiles( path.username + characterName + 'upp', profile );
           getChances(tableChecked);
           break;
 
         case 2:
           // Service selected so output results
           profile = parseInt(pathHash.substring(0,1));
+          // Profile selected so populate UPP
+          upp = diceProfiles( path.username + characterName + 'upp', profile );
           serviceChoosen = parseInt(pathHash.substring(1,1));
           getRolls(tableChecked);
           break;
