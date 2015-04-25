@@ -178,8 +178,7 @@ function callbackRolls() {
   console.log(tableObj, serviceChoosen, char[profile]);
   var out = {};
   // Loop table rows: services
-  Object.keys(tableObj).forEach(function(key,index) { //key = the name of the object key //index = the ordinal position of the key within the object
-  });
+  console.log( tableObj[Object.keys(tableObj)[serviceChoosen]] );
 }
 
 function fallbackRolls() {
