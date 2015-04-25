@@ -117,6 +117,37 @@ expresses the basic characteristics in a specific sequence using hexadecimal (ba
 
 - Social Standing notes the social class and level of society from which the character (and his or her family) come.
 
+## UPP TABLE
+
+```json
+{
+  "st": {
+    "name": "strength",
+    "description": "measure force you may apply"
+  },
+  "de": {
+    "name": "dexterity",
+    "description": "measures agility and physical coordination"
+  },
+  "en": {
+    "name": "endurance",
+    "description": "measures physical determination and stamina"
+  },
+  "in": {
+    "name": "intelligence",
+    "description": "measures of intelligence quotient"
+  },
+  "ed": {
+    "name": "education",
+    "description": "measures the highest level of schooling attained"
+  },
+  "ss": {
+    "name": "social standing",
+    "description": "measure the social class and level of society of the character"
+  }
+}
+```
+
 ## Titles (Social Standing)
 
 - B Knight, Knightess, Dame
