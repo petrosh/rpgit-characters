@@ -90,7 +90,7 @@ function selectPage() {
 
         case 1:
           // Profile selected so show services chances and we have upp
-          // upp = diceProfiles( path.username + characterName + 'upp', profile );
+          upp = diceProfiles( path.username + characterName + 'upp', profile );
           profile = pathHash;
           getChances(tableChecked);
           break;
