@@ -33,13 +33,12 @@
 		<article>
 			<header>
 				<h3>{{@key}}</h3>
+				<p>{{this.description}}</p>
 			</header>
 			<dl>
 				{{#each this}}
-					<dt{{#unless @first}} class="first"{{/unless}}>
-						<dt>{{@key}}</dt>
-						<dd>{{this}}</dd>
-					</dt>
+					<dt{{#unless @first}} class="first"{{/unless}}>{{@key}}</dt>
+					<dd>{{this}}</dd>
 				{{/each}}
 			</dl>
 			<p><a href="#{{../profile}}{{@index}}">Try enlist {{capitalize @key}}</a></p>
