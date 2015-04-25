@@ -84,21 +84,18 @@ function selectPage() {
 
       // Check term
       tableChecked = 'term';
-
       switch (pathHash.length) {
 
         case 1:
-          profile = parseInt(pathHash);
-          // Profile selected so populate UPP
+          // Profile selected so show services chances and we have upp
           upp = diceProfiles( path.username + characterName + 'upp', profile );
+          profile = parseInt(pathHash);
           getChances(tableChecked);
           break;
 
         case 2:
           // Service selected so output results
           profile = parseInt(pathHash.substring(0,1));
-          // Profile selected so populate UPP
-          upp = diceProfiles( path.username + characterName + 'upp', profile );
           serviceChoosen = parseInt(pathHash.substring(1,1));
           getRolls(tableChecked);
           break;
@@ -225,8 +222,6 @@ function callbackChances() {
       out[service] = partial;
     }
   }
-  console.log({ column: out, upp: upp, profile: profile });
-  // ele = tchances( { chances: out, upp: upp, profile: profile } );
   ele = templateTable( { column: out, upp: char[profile], profile: profile } );
 
   document.getElementsByTagName("section")[0].innerHTML = ele;
@@ -254,15 +249,12 @@ function getProfiles() {
 // )
 function diceProfiles(  ){
   Math.seedrandom( arguments[0] );
+  for (var p = 0; p < 10; p++) {
+    char[p] = { st: die(2, arguments[2]), de: die(2, arguments[2]), in: die(2, arguments[2]), en: die(2, arguments[2]), ed: die(2, arguments[2]), ss: die(2, arguments[2]) };
+  }
   if ( arguments[1] ) {
-    for (var p = 0; p < 10; p++) {
-      char[p] = { st: die(2, arguments[2]), de: die(2, arguments[2]), in: die(2, arguments[2]), en: die(2, arguments[2]), ed: die(2, arguments[2]), ss: die(2, arguments[2]) };
-    }
     return char[arguments[1]];
   }else{
-    for (var p1 = 0; p1 < 10; p1++) {
-      char[p1] = { st: die(2, arguments[2]), de: die(2, arguments[2]), in: die(2, arguments[2]), en: die(2, arguments[2]), ed: die(2, arguments[2]), ss: die(2, arguments[2]) };
-    }
     return char;
   }
 }
