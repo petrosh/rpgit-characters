@@ -131,9 +131,6 @@ function callbackVersion() {
 function gotVersion() {
   // Dynamic Javascript Insertion: petrosh/rpgit-system/scripts/diceroll.js
   dynamicInsert(lastVersionSha);
-
-  // Proceed: get character name
-  getAPI( "https://cdn.rawgit.com/" + path.username + "/" + path.reponame + "/v0.1/character/name.txt", callbackName, fallbackName );
 }
 
 function addMinutes( minutes ){
@@ -153,7 +150,8 @@ function dynamicInsert( shaFinished ){
 }
 
 function scriptLoaded(){
-  console.log('systemScriptLoaded');
+  // Proceed: get character name
+  getAPI( "https://cdn.rawgit.com/" + path.username + "/" + path.reponame + "/v0.1/character/name.txt", callbackName, fallbackName );
 }
 
 function fallbackVersion() {
