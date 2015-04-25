@@ -16,33 +16,27 @@
 	<script type="text/x-handlebars-template" id="thi">
 		<h1>Hi {{name}}</h1>
 		<h2>Here are 10 profiles approved by Imperium for you</h2>
-		<pre>{{#profiles}}{{st}}{{de}}{{in}}{{en}}{{ed}}{{ss}} <a href="#{{@index}}">Profile {{@index}}</a>{{#unless @last}}
-{{/unless}}{{/profiles}}</pre>
-	</script>
-
-	<script type="text/x-handlebars-template" id="tchances">
-		<h1>Ok {{upp.st}}{{upp.de}}{{upp.in}}{{upp.en}}{{upp.ed}}{{upp.ss}}</h1>
-		<h2>Here are chances in various services</h2>
-		<div>{{#each chances}}<h3>{{@key}}</h3>{{> services}}<br><a href="#{{../profile}}{{@index}}">Try enlist {{capitalize @key}}</a>{{#unless @last}}<br>{{/unless}}{{/each}}</dive>
+		{{#profiles}}<p><pre>{{st}}{{de}}{{in}}{{en}}{{ed}}{{ss}}</pre> <a href="#{{@index}}">Profile {{@index}}</a>{{#unless @last}}
+{{/unless}}{{/profiles}}</p>
 	</script>
 
 	<script type="text/x-handlebars-template" id="templateTable">
 		<h1>Ok {{upp.profile.st}}{{upp.profile.de}}{{upp.profile.in}}{{upp.profile.en}}{{upp.profile.ed}}{{upp.profile.ss}}</h1>
 		<h2>Here are chances in various services</h2>
-		{{#each column}}
+		{{#column}}
 		<article>
 			<header>
 				<h3>{{@key}}</h3>
 				<p>{{this.description}}</p>
 			</header>
 			<dl>
-				{{#each this}}
+				{{#this}}
 					{{#unless @first}}{{/unless}}<dt>{{@key}}</dt><dd>{{this}}</dd>
-				{{/each}}
+				{{/this}}
 			</dl>
 			<p><a href="#{{../profile}}{{@index}}">Try enlist {{capitalize @key}}</a></p>
 		</article>
-		{{/each}}
+		{{/column}}
 	</script>
 
 <script type="text/x-handlebars-template" id="tservices">
