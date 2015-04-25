@@ -58,7 +58,7 @@ function init() {
   // or commit?
 
   // CHECK sessionStorage
-  if (sessionStorage.getItem('system-sha') === null){
+  if (sessionStorage.getItem('system-sha') === null || sessionStorage.getItem('timestamp') === null){
     getAPIgithub( "https://api.github.com/repos/petrosh/rpgit-system/commits", callbackVersion, fallbackVersion );
   }else{
     var now = new Date().getTime();
@@ -133,7 +133,7 @@ function callbackVersion() {
 }
 
 function addMinutes( minutes ){
-  var cosa = new Date(new Date().getTime() + minutes*60000);
+  var cosa = new Date(new Date().getTime() + minutes*60000).getTime();
   console.log(cosa);
   return cosa;
 }
