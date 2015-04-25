@@ -178,7 +178,16 @@ function callbackRolls() {
   console.log(tableObj, serviceChoosen, char[profile]);
   var out = {};
   // Loop table rows: services
-  console.log( tableObj[Object.keys(tableObj)[serviceChoosen]] );
+  loopTable = tableObj[ Object.keys( tableObj )[ serviceChoosen ] ];
+  Object.keys(loopTable).forEach(function(key,index) {
+    //key = promotion
+    //index = the ordinal position of the key within the object
+    if( key != 'description'){
+      Object.keys(loopTable[key]).forEach(function(key1,index1) {
+        val = parseInt( key1.substring(0,key1.length-1) );
+      });
+    }
+  });
 }
 
 function fallbackRolls() {
