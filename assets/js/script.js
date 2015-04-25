@@ -88,9 +88,8 @@ function selectPage() {
 
         case 1:
           // Profile selected so show services chances and we have upp
-          console.log('profile '+profile);
-          upp = diceProfiles( path.username + characterName + 'upp', profile );
           profile = parseInt(pathHash);
+          upp = diceProfiles( path.username + characterName + 'upp', profile );
           getChances(tableChecked);
           break;
 
@@ -99,7 +98,7 @@ function selectPage() {
           console.log(pathHash);
           profile = parseInt(pathHash.substring(0,1));
           upp = diceProfiles( path.username + characterName + 'upp', profile );
-          serviceChoosen = parseInt(pathHash.substring(1,1));
+          serviceChoosen = parseInt(pathHash.substring(1)); // drop profile
           getRolls(tableChecked);
           break;
       }
