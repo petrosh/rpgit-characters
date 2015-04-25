@@ -35,7 +35,7 @@ var char = [],
   characterName = '',
   ele = '',
   profile = '',
-  service = '',
+  serviceChoosen = '',
   tableChecked = '',
   tableObj = {},
   lastVersionSha = 0
@@ -96,7 +96,7 @@ function selectPage() {
         case 2:
           // Service selected so output results
           profile = parseInt(pathHash.substring(0,1));
-          service = pathHash.substring(1,1);
+          serviceChoosen = parseInt(pathHash.substring(1,1));
           getRolls(tableChecked);
           break;
       }
@@ -174,7 +174,7 @@ function callbackRolls() {
   var resp = this.responseText;
   tableObj = JSON.parse(resp);
   // now resolve table against upp
-  console.log(tableObj, upp);
+  console.log(tableObj, char[profile], serviceChoosen);
 }
 
 function fallbackRolls() {
