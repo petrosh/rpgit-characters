@@ -67,7 +67,7 @@ function init() {
       console.log('sha expired, get new');
       getAPIgithub( "https://api.github.com/repos/petrosh/rpgit-system/commits", callbackVersion, fallbackVersion );
     }else{
-      console.log('still less '+diff);
+      console.log('still less '+now+'-'+diff+'-'+sessionStorage.getItem('timestamp'));
     }
   }
 }
