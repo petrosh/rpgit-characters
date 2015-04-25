@@ -88,6 +88,7 @@ function selectPage() {
 
         case 1:
           // Profile selected so show services chances and we have upp
+          console.log('profile '+profile);
           upp = diceProfiles( path.username + characterName + 'upp', profile );
           profile = parseInt(pathHash);
           getChances(tableChecked);
