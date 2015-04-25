@@ -68,6 +68,9 @@ function init() {
       getAPIgithub( "https://api.github.com/repos/petrosh/rpgit-system/commits", callbackVersion, fallbackVersion );
     }else{
       console.log('still less '+now+'-'+diff+'-'+sessionStorage.getItem('timestamp'));
+      // Retrive sha and proceed
+      lastVersionSha = sessionStorage.getItem('system-sha');
+      gotVersion();
     }
   }
 }
@@ -122,13 +125,19 @@ function callbackVersion() {
   console.log({sha:cosa[0].sha});
   lastVersionSha = cosa[0].sha;
 
-  // STORE IN sessionStorage
+  // STORE sessionStorage
   sessionStorage.setItem('system-sha', lastVersionSha);
   sessionStorage.setItem('timestamp', addMinutes(1) );
 
+  // Proceed: inject scripts/version and get Character Name
+  gotVersion();
+}
+
+function gotVersion() {
   // Dynamic Javascript Insertion: petrosh/rpgit-system/scripts/diceroll.js
   dynamicInsert(lastVersionSha);
-  // get character name
+
+  // Proceed: get character name
   getAPI( "https://cdn.rawgit.com/" + path.username + "/" + path.reponame + "/v0.1/character/name.txt", callbackName, fallbackName );
 }
 
