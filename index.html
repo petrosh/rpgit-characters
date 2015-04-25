@@ -37,8 +37,7 @@
 			</header>
 			<dl>
 				{{#each this}}
-					<dt{{#unless @first}} class="first"{{/unless}}>{{@key}}</dt>
-					<dd>{{this}}</dd>
+					{{#unless @first}}<dd>{{this}}</dd>{{/unless}}
 				{{/each}}
 			</dl>
 			<p><a href="#{{../profile}}{{@index}}">Try enlist {{capitalize @key}}</a></p>
