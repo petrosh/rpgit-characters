@@ -183,9 +183,8 @@ function callbackRolls() {
     //key = promotion
     //index = the ordinal position of the key within the object
     if( key != 'description'){
-      Object.keys(loopTable[key]).forEach(function(key1,index1) {
-        val = parseInt( key1.substring(0,key1.length-1) );
-      });
+      val = parseInt( loopTable[ key ].success.substring(0, loopTable[ key ].success.length-1 ) );
+      console.log(key, val);
     }
   });
 }
