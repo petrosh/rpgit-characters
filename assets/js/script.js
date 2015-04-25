@@ -89,13 +89,12 @@ function selectPage() {
         case 1:
           // Profile selected so show services chances and we have upp
           profile = parseInt(pathHash);
-          upp = diceProfiles( path.username + characterName + 'upp', profile );
+          upp = diceProfiles( path.username + characterName + 'upp' );
           getChances(tableChecked);
           break;
 
         case 2:
           // Service selected so output results
-          console.log(pathHash);
           profile = parseInt(pathHash.substring(0,1));
           upp = diceProfiles( path.username + characterName + 'upp', profile );
           serviceChoosen = parseInt(pathHash.substring(1)); // drop profile
