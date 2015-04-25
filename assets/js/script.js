@@ -182,27 +182,37 @@ function callbackRolls() {
   Object.keys(loopTable).forEach(function(key,index) {
     //key = promotion
     //index = the ordinal position of the key within the object
-    var throwSign = 0;
+    var throwSign = 0, val = 0;
     if( key != 'description' ){
-      var diceEntry = loopTable[ key ].success;
-      switch ( diceEntry.slice(-1) ) {
-        case '+':
-          throwSign = 1;
-          val = parseInt( diceEntry.slice(0, -1) );
-          break;
+      if( "success" in loopTable[ key ] ){
+        var diceEntry = loopTable[ key ].success;
+        switch ( diceEntry.slice( -1 ) ) { // take last character
+          case '+':
+            throwSign = 1;
+            val = parseInt( diceEntry.slice( 0, -1 ) ); // take all but last character
+            break;
 
-        case '-':
-          throwSign = -1;
-          val = parseInt( diceEntry.slice(0, -1) );
-          break;
+          case '-':
+            throwSign = -1;
+            val = parseInt( diceEntry.slice( 0, -1 ) );
+            break;
 
-        default:
-          val = parseInt( diceEntry );
-          break;
+          default:
+            val = parseInt( diceEntry );
+            break;
+        }
+        console.log( key, val, throwSign ); // es. reenlist, 4, 1 (4+)
       }
-      console.log(key, val);
       if( "DM" in loopTable[ key ] ){
-        console.log( loopTable[ key ].DM );
+        var diceModifier = loopTable[ key ].DM;
+        Object.keys( diceModifier ).forEach( function( k ) {
+          var mod = parseInt( k );
+          var att = diceModifier[ k ].slice( 0, -2 ); // all but last two
+          console.log( mod, att );
+          // if( att >= parseInt( diceModifier[ k ].slice( -2 ) ) ){
+          //
+          // }
+        });
       }
     }
   });

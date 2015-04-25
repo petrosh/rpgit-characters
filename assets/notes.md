@@ -213,3 +213,81 @@ Prior Service Table
   - Merchants of the commercial enterprises. Merchants crew the ships of trading corporations or work for independent traders
 - Other: Enlist 3+ ()
   - the shady realm of the underworld
+
+## Function as object property
+
+```javascript
+var katana = {
+  isSharp: true,
+  use: function(){
+    this.isSharp = !this.isSharp;
+  }
+};
+katana.use();
+assert( !katana.isSharp, "true" );
+```
+
+```javascript
+var shuriken = {
+  toss: function(){
+    this.isSharp = true;
+  }
+};
+shuriken.toss();
+```
+
+```javascript
+function Ninja(){
+  this.swung = false;
+
+  this.swingSword = function(){
+    this.swung = !this.swung;
+    return this.swung;
+  };
+
+  this.changeName = function(name){
+    this.name = name;
+  };
+
+  // initial, if is Ninja( name )
+  this.changeName( name );
+}
+
+var ninja = new Ninja();
+assert( ninja.swingSword(), "Calling the instance method." );
+ninja.changeName("Bob");
+assert( ninja.name == "Bob", "The name was successfully changed." );
+```
+
+Smallest, largest
+```javascript
+function smallest(){
+  return Math.min.apply( Math, arguments );
+}
+function largest(){
+  return Math.max.apply( Math, arguments );
+}
+assert(smallest(0, 1, 2, 3) == 0, "Locate the smallest value.");
+assert(largest(0, 1, 2, 3) == 3, "Locate the largest value.");
+```
+
+Private properties
+```javascript
+function Ninja(){
+  var slices = 0;
+
+  this.getSlices = function(){
+    return slices;
+  };
+  this.slice = function(){
+    slices++;
+  };
+}
+
+var ninja = new Ninja();
+ninja.slice();
+assert( ninja.getSlices() == 1, "We're able to access the internal slice data." );
+assert( ninja.slices === undefined, "And the private data is inaccessible to us." );
+```
+
+- [Affect all objects](http://ejohn.org/apps/learn/#67)

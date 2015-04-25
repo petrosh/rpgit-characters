@@ -1,3 +1,7 @@
+section {
+  margin: auto;
+  width: 85%; }
+
 a, a:link, a:visited {
   color: blue; }
 a:hover {
