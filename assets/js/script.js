@@ -7,7 +7,6 @@ var path = { username: pathArray[0], reponame: 'rpgit-characters' };
 var thi = Handlebars.compile( document.getElementById("thi").innerHTML );
 var tname = Handlebars.compile(document.getElementById("tname").innerHTML);
 var templateTable = Handlebars.compile(document.getElementById("templateTable").innerHTML);
-var tservice = Handlebars.registerPartial("services", document.getElementById("tservices").innerHTML);
 // Helpers
 // Capitalize
 Handlebars.registerHelper("capitalize", function(word) {
@@ -90,13 +89,13 @@ function selectPage() {
         case 1:
           // Profile selected so show services chances and we have upp
           upp = diceProfiles( path.username + characterName + 'upp', profile );
-          profile = pathHash;
+          profile = parseInt(pathHash);
           getChances(tableChecked);
           break;
 
         case 2:
           // Service selected so output results
-          profile = pathHash.substring(0,1);
+          profile = parseInt(pathHash.substring(0,1));
           service = pathHash.substring(1,1);
           getRolls(tableChecked);
           break;
