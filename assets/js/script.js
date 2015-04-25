@@ -224,7 +224,7 @@ function callbackChances() {
   }
   console.log({ column: out, upp: upp, profile: profile });
   // ele = tchances( { chances: out, upp: upp, profile: profile } );
-  ele = templateTable( { column: out, upp: char[profile] } );
+  ele = templateTable( { column: out, upp: char[profile], profile: profile } );
 
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
