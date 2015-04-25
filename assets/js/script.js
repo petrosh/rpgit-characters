@@ -182,9 +182,28 @@ function callbackRolls() {
   Object.keys(loopTable).forEach(function(key,index) {
     //key = promotion
     //index = the ordinal position of the key within the object
-    if( key != 'description'){
-      val = parseInt( loopTable[ key ].success.substring(0, loopTable[ key ].success.length-1 ) );
+    var throwSign = 0;
+    if( key != 'description' ){
+      var diceEntry = loopTable[ key ].success;
+      switch ( diceEntry.slice(-1) ) {
+        case '+':
+          throwSign = 1;
+          val = parseInt( diceEntry.slice(0, -1) );
+          break;
+
+        case '-':
+          throwSign = -1;
+          val = parseInt( diceEntry.slice(0, -1) );
+          break;
+
+        default:
+          val = parseInt( diceEntry );
+          break;
+      }
       console.log(key, val);
+      if( "DM" in loopTable[ key ] ){
+        console.log( loopTable[ key ].DM );
+      }
     }
   });
 }
