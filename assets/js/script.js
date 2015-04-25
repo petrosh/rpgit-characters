@@ -96,7 +96,9 @@ function selectPage() {
 
         case 2:
           // Service selected so output results
+          console.log(pathHash);
           profile = parseInt(pathHash.substring(0,1));
+          upp = diceProfiles( path.username + characterName + 'upp', profile );
           serviceChoosen = parseInt(pathHash.substring(1,1));
           getRolls(tableChecked);
           break;
