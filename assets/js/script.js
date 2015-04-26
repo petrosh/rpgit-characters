@@ -34,11 +34,11 @@ Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
     value = parseFloat( value );
     dices = parseFloat( dices );
     sides = parseFloat( sides );
-    var sum = 0;
+    sum = 0;
     for (var i = 1; i < value; i++) {
       sum += i / ( sides ^ dices );
     }
-    return sum; // percent
+    return sum / 100; // percent
 });
 
 var char = [],
