@@ -201,22 +201,23 @@ function callbackRolls() {
             val = parseInt( diceEntry );
             break;
         }
+        valdm = val;
         console.log( key, val, throwSign ); // es. reenlist, 4, 1 (4+)
       }
       if( "DM" in loopTable[ key ] ){
         var diceModifier = loopTable[ key ].DM;
-        valdm = val;
         Object.keys( diceModifier ).forEach( function( k ) {
           var mod = parseInt( k );
-          var att = diceModifier[ k ].slice( 0, -2 ); // all but last two
+          var att = diceModifier[ k ].substr( 0, 2 );
+          var lim = diceModifier[ k ].substr( 2 );
           console.log( mod, att, char[profile][att] ); // es. 1 "ss" 6
-          if( char[profile][att] >= val ){
+          if( char[profile][att] >= lim ){
             valdm += mod;
           }
         });
       }
+      out[ key ] = { success: valdm };
     }
-    out[ key ] = { success: valdm };
     // key = roll name (enlist), val = success value (6), throwSign = +/-/exact
     // mod = dm value (2), att = attribute to match (en)
   });
