@@ -29,6 +29,16 @@ Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
         "%": lvalue % rvalue
     }[operator];
 });
+  Handlebars.registerHelper( "chance", function( value, dices, sides ) {
+    value = parseFloat( value );
+    dices = parseFloat( dices );
+    sides = parseFloat( sides );
+    var sum = 0;
+    for (var i = 1; i < value; i++) {
+      sum += i / ( dices * sides );
+    }
+    return sum;
+});
 
 var char = [],
   upp = [],
