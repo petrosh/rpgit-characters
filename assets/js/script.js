@@ -242,14 +242,12 @@ function callbackRolls() {
 }
 
 function ch( value, dices, sides ) {
-  value = parseFloat( value );
-  dices = parseFloat( dices );
-  sides = parseFloat( sides );
   sum = 0;
   for (var i = 1; i < value; i++) {
     sum += i / ( sides ^ dices );
   }
-  return sum * 100; // percent
+  console.log(sum);
+  return sum; // percent
 }
 
 function fallbackRolls() {
