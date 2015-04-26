@@ -36,7 +36,7 @@ Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
     sides = parseFloat( sides );
     var sum = 0;
     for (var i = 1; i < value; i++) {
-      sum += i / ( dices * sides );
+      sum += i / ( sides ^ dices );
     }
     return sum;
 });
