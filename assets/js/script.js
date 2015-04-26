@@ -207,16 +207,18 @@ function callbackRolls() {
       if( "DM" in loopTable[ key ] ){
         var diceModifier = loopTable[ key ].DM;
         Object.keys( diceModifier ).forEach( function( k ) {
+          var lis = [];
           var mod = parseInt( k );
           var att = diceModifier[ k ].substr( 0, 2 );
           var lim = parseInt ( diceModifier[ k ].substr( 2 ) );
-          console.log( mod, att, char[profile][att], lim ); // es. 1 "ss" 6
-          if( char[profile][att] >= lim ){
+          console.log( mod, att, char[profile][att], lim ); // es. 1 "ss" 6 8
+          if( char[ profile ][ att ] >= lim ){
+            lis.push = { DM: mod, ATT: att, VAL: char[profile][att] };
             valdm += mod;
           }
         });
       }
-      out[ key ] = { success: valdm };
+      out[ key ] = { success: valdm, DM: lis };
     }
     // key = roll name (enlist), val = success value (6), throwSign = +/-/exact
     // mod = dm value (2), att = attribute to match (en)
