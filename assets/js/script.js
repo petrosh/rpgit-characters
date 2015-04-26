@@ -224,7 +224,7 @@ function callbackRolls() {
           var lim = parseInt ( diceModifier[ k ].substr( 2 ) );
           console.log( mod, att, char[profile][att], lim ); // es. 1 "ss" 6 8
           if( char[ profile ][ att ] >= lim ){
-            lis.push = { DM: mod, ATT: att, VAL: char[profile][att] };
+            lis.push( { DM: mod, ATT: att, VAL: char[profile][att] } );
             valdm += mod;
           }
         });
