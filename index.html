@@ -47,11 +47,11 @@
 				<h3>{{@key}}</h3>
 			</header>
 			<p>Success {{success}} (chance {{chance success 2 6}})</p>
-			<dl>
+			<ul>
 				{{#each DM}}
-					<dt>{{DM}}</dt><dd>{{VAL}} for {{ATT}}</dd>
+					<li>{{DM}}: {{VAL}} for {{ATT}}</li>
 				{{/each}}
-			</dl>
+			</ul>
 		</article>
 		{{/each}}
 	</script>

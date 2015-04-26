@@ -38,7 +38,7 @@ Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
     for (var i = 1; i < value; i++) {
       sum += i / ( sides ^ dices );
     }
-    return sum;
+    return ( sum * 100 ) / 36; // percent
 });
 
 var char = [],
