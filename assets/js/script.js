@@ -215,9 +215,9 @@ function callbackRolls() {
         console.log( key, val, throwSign ); // es. reenlist, 4, 1 (4+)
       }
       if( "DM" in loopTable[ key ] ){
+        lis = [];
         var diceModifier = loopTable[ key ].DM;
         Object.keys( diceModifier ).forEach( function( k ) {
-          var lis = [];
           var mod = parseInt( k );
           var att = diceModifier[ k ].substr( 0, 2 );
           var lim = parseInt ( diceModifier[ k ].substr( 2 ) );
@@ -234,6 +234,9 @@ function callbackRolls() {
     // mod = dm value (2), att = attribute to match (en)
   });
   console.log('ready', out );
+  ele = templateChances( { chances: out } );
+  document.getElementsByTagName("section")[0].innerHTML = ele;
+
 }
 
 function fallbackRolls() {
@@ -282,7 +285,6 @@ function callbackChances() {
     }
   }
   ele = templateTable( { column: out, upp: char[profile], profile: profile } );
-
   document.getElementsByTagName("section")[0].innerHTML = ele;
 }
 
