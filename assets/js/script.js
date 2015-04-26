@@ -36,9 +36,9 @@ Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
     sides = parseFloat( sides );
     sum = 0;
     for (var i = 1; i < value; i++) {
-      sum += i / ( sides ^ dices );
+      sum += i / Math.pow( sides, dices );
     }
-    return sum * 100; // percent
+    return sum; // percent
 });
 
 var char = [],
@@ -229,8 +229,7 @@ function callbackRolls() {
           }
         });
       }
-      var chc = ch( valdm, 2, 6 );
-      out[ key ] = { success: valdm, DM: lis, calcul: chc };
+      out[ key ] = { success: valdm, DM: lis };
     }
     // key = roll name (enlist), val = success value (6), throwSign = +/-/exact
     // mod = dm value (2), att = attribute to match (en)
@@ -239,15 +238,6 @@ function callbackRolls() {
   ele = templateChances( { chances: out } );
   document.getElementsByTagName("section")[0].innerHTML = ele;
 
-}
-
-function ch( value, dices, sides ) {
-  sum = 0;
-  for (var i = 1; i < value; i++) {
-    sum += i / ( sides ^ dices );
-  }
-  console.log(sum);
-  return sum; // percent
 }
 
 function fallbackRolls() {
