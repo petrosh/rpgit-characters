@@ -46,9 +46,10 @@
 			<header>
 				<h3>{{@key}}</h3>
 			</header>
+			<p>Success {{success}} (chance {{chance success 2 6}})</p>
 			<dl>
 				{{#each this}}
-					{{#unless @first}}<dt>{{@key}}</dt><dd>{{this}}</dd>{{/unless}}
+					<dt>{{@key}}</dt><dd>{{this}}</dd>
 				{{/each}}
 			</dl>
 		</article>
