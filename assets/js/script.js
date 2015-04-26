@@ -182,7 +182,7 @@ function callbackRolls() {
   Object.keys(loopTable).forEach(function(key,index) {
     //key = promotion
     //index = the ordinal position of the key within the object
-    var throwSign = 0, val = 0;
+    var throwSign = 0, val = 0, valdm = 0;
     if( key != 'description' ){
       if( "success" in loopTable[ key ] ){
         var diceEntry = loopTable[ key ].success;
@@ -205,18 +205,21 @@ function callbackRolls() {
       }
       if( "DM" in loopTable[ key ] ){
         var diceModifier = loopTable[ key ].DM;
+        valdm = val;
         Object.keys( diceModifier ).forEach( function( k ) {
           var mod = parseInt( k );
           var att = diceModifier[ k ].slice( 0, -2 ); // all but last two
-          console.log( mod, att, char[profile][att] );
-          // if( att >= parseInt( diceModifier[ k ].slice( -2 ) ) ){
-          //
-          // }
+          console.log( mod, att, char[profile][att] ); // es. 1 "ss" 6
+          if( char[profile][att] >= val ){
+            valdm += mod;
+          }
         });
       }
     }
+    out[ key ] = { success: valdm };
     // key = roll name (enlist), val = success value (6), throwSign = +/-/exact
     // mod = dm value (2), att = attribute to match (en)
+    console.log('ready', out );
   });
 }
 
