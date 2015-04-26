@@ -219,8 +219,8 @@ function callbackRolls() {
     out[ key ] = { success: valdm };
     // key = roll name (enlist), val = success value (6), throwSign = +/-/exact
     // mod = dm value (2), att = attribute to match (en)
-    console.log('ready', out );
   });
+  console.log('ready', out );
 }
 
 function fallbackRolls() {
