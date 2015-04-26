@@ -41,20 +41,16 @@
 	</script>
 
 	<script type="text/x-handlebars-template" id="templateChances">
-		<h1>Ok {{hex upp.st}}{{hex upp.de}}{{hex upp.in}}{{hex upp.en}}{{hex upp.ed}}{{hex upp.ss}}</h1>
-		<h2>Here are chances in various services</h2>
-		{{#each column}}
+		{{#each chances}}
 		<article>
 			<header>
 				<h3>{{@key}}</h3>
-				<p>{{this.description}}</p>
 			</header>
 			<dl>
 				{{#each this}}
 					{{#unless @first}}<dt>{{@key}}</dt><dd>{{this}}</dd>{{/unless}}
 				{{/each}}
 			</dl>
-			<p>Try enlist <a href="#{{../profile}}{{@index}}">{{capitalize @key}}</a></p>
 		</article>
 		{{/each}}
 	</script>

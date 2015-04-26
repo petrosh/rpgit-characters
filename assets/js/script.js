@@ -7,6 +7,7 @@ var path = { username: pathArray[0], reponame: 'rpgit-characters' };
 var thi = Handlebars.compile( document.getElementById("thi").innerHTML );
 var tname = Handlebars.compile(document.getElementById("tname").innerHTML);
 var templateTable = Handlebars.compile(document.getElementById("templateTable").innerHTML);
+var templateChances = Handlebars.compile(document.getElementById("templateChances").innerHTML);
 // Helpers
 // Capitalize
 Handlebars.registerHelper("capitalize", function(word) {
