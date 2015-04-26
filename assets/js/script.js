@@ -229,8 +229,8 @@ function callbackRolls() {
           }
         });
       }
-      ch = ch( 2, 6, valdm );
-      out[ key ] = { success: valdm, DM: lis, chance: ch };
+      var chc = ch( 2, 6, valdm );
+      out[ key ] = { success: valdm, DM: lis, chance: chc };
     }
     // key = roll name (enlist), val = success value (6), throwSign = +/-/exact
     // mod = dm value (2), att = attribute to match (en)
