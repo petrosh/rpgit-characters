@@ -207,14 +207,16 @@ function callbackRolls() {
         var diceModifier = loopTable[ key ].DM;
         Object.keys( diceModifier ).forEach( function( k ) {
           var mod = parseInt( k );
-          var att = diceModifier[ k ].slice( 0, -2 ); // all but last two
-          console.log( mod, att );
+          var att = parseInt( diceModifier[ k ].slice( 0, -2 ) ); // all but last two
+          console.log( mod, att, char[profile][att] );
           // if( att >= parseInt( diceModifier[ k ].slice( -2 ) ) ){
           //
           // }
         });
       }
     }
+    // key = roll name (enlist), val = success value (6), throwSign = +/-/exact
+    // mod = dm value (2), att = attribute to match (en)
   });
 }
 
