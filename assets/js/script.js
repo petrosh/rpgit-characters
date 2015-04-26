@@ -229,7 +229,8 @@ function callbackRolls() {
           }
         });
       }
-      out[ key ] = { success: valdm, DM: lis };
+      ch = ch( 2, 6, valdm );
+      out[ key ] = { success: valdm, DM: lis, chance: ch };
     }
     // key = roll name (enlist), val = success value (6), throwSign = +/-/exact
     // mod = dm value (2), att = attribute to match (en)
@@ -238,6 +239,17 @@ function callbackRolls() {
   ele = templateChances( { chances: out } );
   document.getElementsByTagName("section")[0].innerHTML = ele;
 
+}
+
+function ch( value, dices, sides ) {
+  value = parseFloat( value );
+  dices = parseFloat( dices );
+  sides = parseFloat( sides );
+  sum = 0;
+  for (var i = 1; i < value; i++) {
+    sum += i / ( sides ^ dices );
+  }
+  return sum * 100; // percent
 }
 
 function fallbackRolls() {
