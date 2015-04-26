@@ -192,7 +192,7 @@ function callbackRolls() {
   Object.keys(loopTable).forEach(function(key,index) {
     //key = promotion
     //index = the ordinal position of the key within the object
-    var throwSign = 0, val = 0, valdm = 0;
+    var throwSign = 0, val = 0, valdm = 0, lis = [];
     if( key != 'description' ){
       if( "success" in loopTable[ key ] ){
         var diceEntry = loopTable[ key ].success;
