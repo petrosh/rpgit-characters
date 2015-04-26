@@ -209,7 +209,7 @@ function callbackRolls() {
         Object.keys( diceModifier ).forEach( function( k ) {
           var mod = parseInt( k );
           var att = diceModifier[ k ].substr( 0, 2 );
-          var lim = diceModifier[ k ].substr( 2 );
+          var lim = parseInt ( diceModifier[ k ].substr( 2 ) );
           console.log( mod, att, char[profile][att], lim ); // es. 1 "ss" 6
           if( char[profile][att] >= lim ){
             valdm += mod;
