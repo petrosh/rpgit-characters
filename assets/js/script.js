@@ -229,7 +229,7 @@ function callbackRolls() {
           }
         });
       }
-      var chc = ch( 2, 6, valdm );
+      var chc = ch( valdm, 2, 6 );
       out[ key ] = { success: valdm, DM: lis, chance: chc };
     }
     // key = roll name (enlist), val = success value (6), throwSign = +/-/exact
