@@ -9,28 +9,15 @@ function Character () {
 }
 
 Character.prototype.setup = function () {
-  this.name = "https://cdn.rawgit.com/" + this.username + "/" + this.reponame + "/v0.1/character/name.txt";
+  var url = "https://cdn.rawgit.com/" + this.username + "/" + this.reponame + "/v0.1/character/name.txt";
+  var xhr = new XMLHttpRequest();
+  xhr.open ("GET", url, true);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == 200) this.name = xhr.responseText;
+    if (xhr.readyState == 4 && xhr.status == 404) this.name = url + " not found";
+  };
+  xhr.send();
 };
 
-function getName (obj) {
-  var url = "https://cdn.rawgit.com/" + obj.username + "/" + obj.reponame + "/v0.1/character/name.txt";
-  var xhr = new XMLHttpRequest();
-  xhr.open ("GET", url, true);
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) return xhr.responseText;
-    if (xhr.readyState == 4 && xhr.status == 404) return url + " not found";
-  };
-  xhr.send();
-}
-
-function getFile(url) {
-  var xhr = new XMLHttpRequest();
-  xhr.open ("GET", url, true);
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) return xhr.responseText;
-    if (xhr.readyState == 4 && xhr.status == 404) return url + " not found";
-  };
-  xhr.send();
-}
 var player = new Character();
 console.log(player);
