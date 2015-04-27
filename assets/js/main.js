@@ -15,8 +15,8 @@ Character.prototype.setup = function () {
   var xhr = new XMLHttpRequest();
   xhr.open ("GET", url, true);
   xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) this.setName.apply(xhr.responseText);
-    if (xhr.readyState == 4 && xhr.status == 404) this.setName.apply(url + " not found");
+    if (xhr.readyState == 4 && xhr.status == 200) this.setName(xhr.responseText);
+    if (xhr.readyState == 4 && xhr.status == 404) this.setName(url + " not found");
   };
   xhr.send();
 };
