@@ -3,7 +3,7 @@ function Character () {
   this.username         = window.location.host.split('.')[0];
   this.reponame         = window.location.pathname.split('/')[1];
   this.seed             = this.username + this.reponame;
-  this.name             = function (xhr){ console.log(xhr); }
+  this.name             = function (xhr){ console.log(xhr); };
   this.setup();
 
 }
