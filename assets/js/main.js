@@ -20,7 +20,7 @@ function getName (obj) {
     if (xhr.readyState == 4 && xhr.status == 404) return url + " not found";
   };
   xhr.send();
-};
+}
 
 function getFile(url) {
   var xhr = new XMLHttpRequest();
@@ -32,4 +32,4 @@ function getFile(url) {
   xhr.send();
 }
 
-var player = new Character();
+console.log(new Character());
