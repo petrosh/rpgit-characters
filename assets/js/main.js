@@ -3,7 +3,9 @@ function Character () {
   this.username         = window.location.host.split('.')[0];
   this.reponame         = window.location.pathname.split('/')[1];
   this.seed             = this.username + this.reponame;
-  this.name             = function (xhr){ console.log(xhr); };
+  this.setName          = function (response) {
+    this.name = response;
+  };
   this.setup();
 
 }
@@ -13,8 +15,8 @@ Character.prototype.setup = function () {
   var xhr = new XMLHttpRequest();
   xhr.open ("GET", url, true);
   xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) this.name.apply(xhr.responseText);
-    if (xhr.readyState == 4 && xhr.status == 404) this.name.apply(url + " not found");
+    if (xhr.readyState == 4 && xhr.status == 200) this.setName.apply(xhr.responseText);
+    if (xhr.readyState == 4 && xhr.status == 404) this.setName.apply(url + " not found");
   };
   xhr.send();
 };
