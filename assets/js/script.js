@@ -38,7 +38,7 @@ Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
     for (var i = 1; i < value; i++) {
       sum += i / Math.pow( sides, dices );
     }
-    return Math.round(sum * 1000) / 10; // percent
+    return Math.round(sum * 100); // percent
 });
 
 var char = [],
