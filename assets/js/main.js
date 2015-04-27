@@ -4,7 +4,7 @@ function Character () {
   this.reponame         = window.location.pathname.split('/')[1];
   this.seed             = this.username + this.reponame;
   this.name             = function () {
-    var url = "https://cdn.rawgit.com/" + obj.username + "/" + obj.reponame + "/v0.1/character/name.txt";
+    var url = "https://cdn.rawgit.com/" + this.username + "/" + this.reponame + "/v0.1/character/name.txt";
     var xhr = new XMLHttpRequest();
     xhr.open ("GET", url, true);
     xhr.onreadystatechange = function() {
