@@ -18,5 +18,7 @@ Character.prototype.name = function () {
 };
 
 Character.prototype.setup = function () {
-  console.log( new Character() );
+  console.log( this );
 };
+
+var player = new Character();
