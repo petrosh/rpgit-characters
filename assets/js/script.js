@@ -36,7 +36,7 @@ Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
     sides = parseFloat( sides );
     sum = 0;
     tot = 0;
-    camb = factorial( dices + sides -1 ) / ( factorial( dices ) / factorial( sides -1 ) );
+    camb = factorial( dices + sides -1 ) / ( factorial( dices ) * factorial( sides -1 ) );
     for (var i = 1; i < value; i++) {
       sum += i / Math.pow( sides, dices );
       console.log(i,sum,Math.pow(sides, dices));
