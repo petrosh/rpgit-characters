@@ -9,6 +9,7 @@ rpgit characters generator and architecture
 - [rawgit](https://rawgit.com/)
 - [jshint](http://jshint.com/docs/)
 - [forkngo](http://jlord.us/forkngo)
+- [anydice](http://anydice.com/)
 
 ## Links tldrify
 
