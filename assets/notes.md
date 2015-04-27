@@ -30,6 +30,11 @@ PUT  THE  SHA  INTO  LINK
 
 ### fork-n-play
 
+- WAR
+  - hex
+- SPORT
+  - GFL (git football league)
+
 ### GIST
 
 - please edit in place this fucking gist

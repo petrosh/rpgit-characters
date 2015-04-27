@@ -3,14 +3,15 @@ function Character () {
   this.username         = window.location.host.split('.')[0];
   this.reponame         = window.location.pathname.split('/')[1];
   this.seed             = this.username + this.reponame;
-  this.setName          = function (response) {
-    this.name = response;
-  };
+
   this.setup();
 
 }
 
 Character.prototype.setup = function () {
+  this.setName          = function (response) {
+    this.name = response;
+  };
   var url = "https://cdn.rawgit.com/" + this.username + "/" + this.reponame + "/v0.1/character/name.txt";
   var xhr = new XMLHttpRequest();
   xhr.open ("GET", url, true);
