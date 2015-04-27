@@ -9,15 +9,15 @@ function Character () {
 }
 
 Character.prototype.setup = function () {
-  this.setName          = function (response) {
+  function setName (response) {
     this.name = response;
-  };
+  }
   var url = "https://cdn.rawgit.com/" + this.username + "/" + this.reponame + "/v0.1/character/name.txt";
   var xhr = new XMLHttpRequest();
   xhr.open ("GET", url, true);
   xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) this.setName(xhr.responseText);
-    if (xhr.readyState == 4 && xhr.status == 404) this.setName(url + " not found");
+    if (xhr.readyState == 4 && xhr.status == 200) setName(xhr.responseText);
+    if (xhr.readyState == 4 && xhr.status == 404) setName(url + " not found");
   };
   xhr.send();
 };
