@@ -41,8 +41,7 @@ Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
         if( (i+j) <= value ) sum += 1/Math.pow(sides,dices);
       }
     }
-    //return Math.round(sum * 100); // percent
-    return sum;
+    return Math.round(sum * 10000)/100; // percent with 2 decimals
 });
 
 var char = [],
