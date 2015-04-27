@@ -35,11 +35,13 @@ Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
     dices = parseFloat( dices );
     sides = parseFloat( sides );
     sum = 0;
+    tot = 0;
+    camb = factorial( dices + sides -1 ) / ( factorial( dices ) / factorial( sides -1 ) );
     for (var i = 1; i < value; i++) {
       sum += i / Math.pow( sides, dices );
       console.log(i,sum,Math.pow(sides, dices));
     }
-    console.log(sum, sum*100, Math.round(sum*1000)/10);
+    console.log('total comb', camb);
     return Math.round(sum * 100); // percent
 });
 
@@ -383,4 +385,9 @@ function dice( ){
     }
   }
   return out;
+}
+function factorial (n) {
+  if (n === 0 || n == 1) return 1;
+  if (f[n] > 0) return f[n];
+  return factorial(n-1) * n;
 }
