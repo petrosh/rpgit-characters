@@ -53,7 +53,8 @@ var char = [],
   serviceChoosen = '',
   tableChecked = '',
   tableObj = {},
-  lastVersionSha = 0
+  lastVersionSha = 0,
+  f = [];
 ;
 
 init();
@@ -389,5 +390,5 @@ function dice( ){
 function factorial (n) {
   if (n === 0 || n == 1) return 1;
   if (f[n] > 0) return f[n];
-  return factorial(n-1) * n;
+  return f[n] = factorial(n-1) * n;
 }
