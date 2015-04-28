@@ -1,5 +1,5 @@
-setHashChange();
-
-var section = document.getElementsByTagName("section")[0];
-
-var tmpNoname = Handlebars.compile( document.getElementById("tmpNoname").innerHTML );
+// Hash change
+window.onhashchange = function() {
+  document.getElementsByTagName("section")[0].innerHTML = '';
+  window.location.reload();
+};

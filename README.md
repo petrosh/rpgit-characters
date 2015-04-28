@@ -10,6 +10,7 @@ rpgit characters generator and architecture
 - [jshint](http://jshint.com/docs/)
 - [forkngo](http://jlord.us/forkngo)
 - [anydice](http://anydice.com/)
+- [chaining](http://schier.co/blog/2013/11/14/method-chaining-in-javascript.html)
 
 ## Links tldrify
 
