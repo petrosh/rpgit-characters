@@ -4,15 +4,37 @@ function Character () {
   this.username         = 'petrosh';
   // this.reponame         = window.location.pathname.split('/')[1];
   this.reponame         = 'rpgit-characters';
+  this.system           = 'petrosh/rpgit-system';
 
   this.pathHash         = window.location.hash.substring(1); // Drop #
   this.seed             = this.username + this.reponame;
   this.expiration       = 1; // in minutes
 
-  this.getVar('name');
+  this.localUrl         = {url:"https://cdn.rawgit.com/" + this.username + "/" + this.reponame + "/gh-pages/character/",
+                            ext:".txt"};
+  this.systemUrl        = {url:"https://cdn.rawgit.com/" + this.system + "/gh-pages/tables/",
+                            ext:".json"};
+
+  this.init             = function(){
+                          this.preload( [ 'name', 'career', 'bithplace' ] );
+                          this.prefetch( [ 'attributes', 'terms'] );
+                        };
+
+  this.init();
 
 }
 
+Character.prototype.preload = function(arr){
+  for (var i = 0; i < arr.length; i++) {
+    this.getStored(arr[i],this.localUrl);
+  }
+};
+
+Character.prototype.prefetch = function(arr){
+  for (var i = 0; i < arr.length; i++) {
+    this.getStored(arr[i],this.systemUrl);
+  }
+};
 
 Character.prototype.getVar = function (varName,value) {
   if(value !== undefined) {
@@ -23,16 +45,17 @@ Character.prototype.getVar = function (varName,value) {
 
 Character.prototype.setVar = function (varName,value) {
   this[varName] = value;
-  this.gotVar(varName);
+  // this.gotVar(varName);
 };
 
 Character.prototype.gotVar = function (varName) {
-
-  if( this[varName] === '' )
+  var value = this[varName];
+  if( value === '' )
     this.render(varName,'no');
   else {
     switch (varName) {
       case 'name':
+        this.getProfiles();
         this.getVar('career');
         break;
 
@@ -44,21 +67,25 @@ Character.prototype.gotVar = function (varName) {
 
 };
 
-Character.prototype.getStored = function (varName) {
+Character.prototype.getProfiles = function () {
+
+};
+
+Character.prototype.getStored = function (varName,url) {
   var item = sessionStorage.getItem(varName);
   var tstamp = sessionStorage.getItem(varName+'-exp');
   var diff = tstamp - new Date().getTime();
   if (item)
     if (tstamp)
-      if (diff>0) this.setVar(varName, item);
-      else this.getFile(varName);
-    else this.getFile(varName);
-  else this.getFile(varName);
+      if (diff>0) this.setVar(varName, JSON.parse(item));
+      else this.getFile(varName,url);
+    else this.getFile(varName,url);
+  else this.getFile(varName,url);
 };
 
-Character.prototype.getFile = function (file) {
+Character.prototype.getFile = function (file,baseUrl) {
   var self = this;
-  var url = "https://cdn.rawgit.com/" + self.username + "/" + self.reponame + "/gh-pages/character/"+file+".txt";
+  var url = baseUrl.url+file+baseUrl.ext;
   var open_original = XMLHttpRequest.prototype.open;
   var send_original = XMLHttpRequest.prototype.send;
 
@@ -70,13 +97,12 @@ Character.prototype.getFile = function (file) {
       this.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           var response = this.responseText.replace(/(\r\n|\n|\r)/gm,"");
-          console.log('blast');
           self.setVar( file, response );
           self.storeVar( file, response );
         }
-        if (this.readyState == 4 && this.status == 404) {
-          console.log('not Found',url);
-        }
+        // if (this.readyState == 4 && this.status == 404) {
+        //   console.log('not Found',this.responseURL);
+        // }
       };
       send_original.apply(this, arguments);
   };

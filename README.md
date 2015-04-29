@@ -11,6 +11,8 @@ rpgit characters generator and architecture
 - [forkngo](http://jlord.us/forkngo)
 - [anydice](http://anydice.com/)
 - [chaining](http://schier.co/blog/2013/11/14/method-chaining-in-javascript.html)
+- [Store and Parse objects on Session Storage](http://jsfiddle.net/pKXMa/)
+
 
 ## Links tldrify
 

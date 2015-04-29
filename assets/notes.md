@@ -1,6 +1,29 @@
 PUT  THE  SHA  INTO  LINK
 =========================
 
+### Flow
+
+load:
+- read name, career, world, event, command, tables
+
+
+
+read name
+  - if'' (b) "commit"
+  - else >
+    read career
+    - if!='' compute result and benefits and adventure
+    - if'' compute profile >
+      get 1 hash
+      - if yes show service for profile and (c)"select service"
+      - if no >
+        get 2 hash
+        - if no show profiles for name and "select profile"
+        - if yes show first term result and benefits >
+          get 2+n hash
+          - if no "reenlist(a), dead-restart(b), change service(c)"
+          - if yes show n term result and benefits > get 2+n hash
+
 # Game versioning is system last commit?
 
 ### RPGit
@@ -40,8 +63,6 @@ PUT  THE  SHA  INTO  LINK
 - please edit in place this fucking gist
 - dark
 - save a la Drive
-
-- DNS: rpgit.space €4,54/year
 
 ---
 
@@ -121,37 +142,6 @@ expresses the basic characteristics in a specific sequence using hexadecimal (ba
 - Education indicates the highest level of schooling attained.
 
 - Social Standing notes the social class and level of society from which the character (and his or her family) come.
-
-## UPP TABLE
-
-```json
-{
-  "st": {
-    "name": "strength",
-    "description": "measure force you may apply"
-  },
-  "de": {
-    "name": "dexterity",
-    "description": "measures agility and physical coordination"
-  },
-  "en": {
-    "name": "endurance",
-    "description": "measures physical determination and stamina"
-  },
-  "in": {
-    "name": "intelligence",
-    "description": "measures of intelligence quotient"
-  },
-  "ed": {
-    "name": "education",
-    "description": "measures the highest level of schooling attained"
-  },
-  "ss": {
-    "name": "social standing",
-    "description": "measure the social class and level of society of the character"
-  }
-}
-```
 
 ## Titles (Social Standing)
 
