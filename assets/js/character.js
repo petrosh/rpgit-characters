@@ -8,84 +8,133 @@ function Character () {
 
   this.pathHash         = window.location.hash.substring(1); // Drop #
   this.seed             = this.username + this.reponame;
-  this.expiration       = 1; // in minutes
+  this.expiration       = 10; // in minutes
 
-  this.localUrl         = {url:"https://cdn.rawgit.com/" + this.username + "/" + this.reponame + "/gh-pages/character/",
-                            ext:".txt"};
-  this.systemUrl        = {url:"https://cdn.rawgit.com/" + this.system + "/gh-pages/tables/",
-                            ext:".json"};
+  this.preload          = [
+    {
+      url:   "https://cdn.rawgit.com/" + this.username + "/" + this.reponame + "/gh-pages/character/",
+      ext:   ".txt",
+      array: [ 'name', 'career', 'birthplace' ]
+    }, {
+      url:   "https://cdn.rawgit.com/" + this.system + "/gh-pages/tables/",
+      ext:   ".json",
+      array: [ 'attributes', 'terms']
+    }
+  ];
 
-  this.init             = function(){
-                          this.preload( [ 'name', 'career', 'bithplace' ] );
-                          this.prefetch( [ 'attributes', 'terms'] );
-                        };
+  this.preloadIndex     = 0;
+  this.preloadElement   = this.preload[this.preloadIndex];
 
-  this.init();
+  this.goFirst();
 
 }
 
-Character.prototype.preload = function(arr){
-  for (var i = 0; i < arr.length; i++) {
-    this.getStored(arr[i],this.localUrl);
-  }
-};
-
-Character.prototype.prefetch = function(arr){
-  for (var i = 0; i < arr.length; i++) {
-    this.getStored(arr[i],this.systemUrl);
-  }
-};
-
-Character.prototype.getVar = function (varName,value) {
-  if(value !== undefined) {
-    this.setVar(arguments);
-  } else
-    this.getStored(varName);
-};
-
-Character.prototype.setVar = function (varName,value) {
-  this[varName] = value;
-  // this.gotVar(varName);
-};
-
-Character.prototype.gotVar = function (varName) {
-  var value = this[varName];
-  if( value === '' )
-    this.render(varName,'no');
-  else {
-    switch (varName) {
-      case 'name':
-        this.getProfiles();
-        this.getVar('career');
-        break;
-
-      default:
-        console.log(varName);
-        break;
+Character.prototype.goFirst = function(){
+  console.log(this.preloadIndex,this.preload.length);
+  if(this.preloadElement.array.length > 0){
+    var now = this.preloadElement.array.shift();
+    var stored = this.getStored(now);
+    if (!stored)
+      this.newRequest(now,this.preloadElement.url,this.preloadElement.ext);
+    else
+      this.goFirst();
+  }else{
+    if(this.preloadIndex + 1 == this.preload.length){
+      // exit
+    }else{
+      this.preloadIndex ++;
+      this.preloadElement   = this.preload[this.preloadIndex];
+      this.goFirst();
     }
   }
-
 };
 
-Character.prototype.getProfiles = function () {
-
+Character.prototype.fallback = function (xhr) {
+  console.log("fb "+xhr);
 };
 
-Character.prototype.getStored = function (varName,url) {
+Character.prototype.callback = function (xhr) {
+  this.goFirst();
+  console.log("cb "+xhr);
+};
+
+Character.prototype.newRequest = function(fileName,baseUrl,Filext){
+    var self = this;
+    var url = baseUrl + fileName + Filext;
+    var xhr = new XMLHttpRequest();
+    xhr.open ( "GET", url, true );
+    // xhr.setRequestHeader('Accept','application/vnd.github.v3.'+media+'+json');
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        var response = xhr.responseText.replace(/(\r\n|\n|\r)/gm,"");
+        self.storeVar(fileName,response);
+        self.callback(response);
+      }
+      if (xhr.readyState == 4 && xhr.status == 404) {
+        self.fallback.call(xhr);
+      }
+    };
+    xhr.send();
+};
+
+Character.prototype.storeVar = function (varName,value) {
+  this[varName] = value;
+  sessionStorage.setItem( varName, value);
+  sessionStorage.setItem( varName + '-exp', addMinutes(this.expiration));
+  function addMinutes( minutes ){
+    return new Date(new Date().getTime() + minutes*60000).getTime();
+  }
+};
+
+
+Character.prototype.getStored = function (varName,url,ext) {
   var item = sessionStorage.getItem(varName);
   var tstamp = sessionStorage.getItem(varName+'-exp');
   var diff = tstamp - new Date().getTime();
-  if (item)
-    if (tstamp)
-      if (diff>0) this.setVar(varName, JSON.parse(item));
-      else this.getFile(varName,url);
-    else this.getFile(varName,url);
-  else this.getFile(varName,url);
+  if (item) {
+    if (tstamp) {
+      if (diff>0) {
+        return item;
+      } else return false;
+    } else return false;
+  } else return false;
 };
 
-Character.prototype.getFile = function (file,baseUrl) {
+Character.prototype.output = function (varName) {
+  switch (this[varName]) {
+    case null:
+      this.render('name','no');
+      break;
+
+    default:
+      this.render('name');
+      break;
+
+  }
+};
+
+Character.prototype.render = function (tmp,exist) {
+  var section = document.getElementsByTagName("section")[0];
+  console.log('render',arguments);
+  //var template = Handlebars.compile( document.getElementById( exist + tmp ).innerHTML );
+  //var rendered = template(this);
+  //section.innerHTML = rendered;
+  //section.className = tmp;
+};
+
+ // -----------------------------
+
+
+Character.prototype.getVar = function (varName,value) {
+ if(value !== undefined) {
+   this.setVar(arguments);
+ } else
+   this.getStored(varName);
+};
+
+Character.prototype.getFile = function (file,baseUrl,ext) {
   var self = this;
-  var url = baseUrl.url+file+baseUrl.ext;
+  var url = baseUrl + file + ext;
   var open_original = XMLHttpRequest.prototype.open;
   var send_original = XMLHttpRequest.prototype.send;
 
@@ -95,6 +144,7 @@ Character.prototype.getFile = function (file,baseUrl) {
 
   XMLHttpRequest.prototype.send = function(data) {
       this.onreadystatechange = function() {
+        console.log(this);
         if (this.readyState == 4 && this.status == 200) {
           var response = this.responseText.replace(/(\r\n|\n|\r)/gm,"");
           self.setVar( file, response );
@@ -108,22 +158,7 @@ Character.prototype.getFile = function (file,baseUrl) {
   };
 
   var xmlhttp = new XMLHttpRequest();
+  console.log(url);
   xmlhttp.open('GET', url, true);
   xmlhttp.send();
-};
-
-Character.prototype.storeVar = function (varName,value) {
-  sessionStorage.setItem( varName, value);
-  sessionStorage.setItem( varName + '-exp', addMinutes(this.expiration));
-  function addMinutes( minutes ){
-    return new Date(new Date().getTime() + minutes*60000).getTime();
-  }
-};
-
-Character.prototype.render = function (tmp,exist) {
-  var section = document.getElementsByTagName("section")[0];
-  var template = Handlebars.compile( document.getElementById( exist + tmp ).innerHTML );
-  var rendered = template(this);
-  section.innerHTML = rendered;
-  section.className = tmp;
 };
